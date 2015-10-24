@@ -1,0 +1,7 @@
+1 degree of longitude at equator = 60 nm OR 111.2 km OR 69.096477 miles
+there are 7200 half seconds in an hour
+so if we are traveling at 140 mph
+we can cover 140/69.096477 degrees of longitude on the equator per hour (2.026156 degrees of longitude)
+this works out to 2.026156/7200 (if traveling east at 140 mph) degrees of longitude per half second or (.00028141)
+We can then manufacture situations along the equator with relative ease.
+
