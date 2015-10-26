@@ -1,0 +1,7 @@
+/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/bin/Debug/CollisionDetectionSystem.exe.mdb
+/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/bin/Debug/CollisionDetectionSystem.exe
+/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/obj/x86/Debug/CollisionDetectionSystem.exe
+/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/obj/x86/Debug/CollisionDetectionSystem.exe.mdb
+/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/bin/Debug/MathNet.Numerics.dll
+/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/bin/Debug/nunit.framework.dll

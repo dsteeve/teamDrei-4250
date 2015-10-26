@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E91E1BC9-7BAE-422A-B33E-53D20D7350CA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CollisionDetectionSystem</RootNamespace>
+    <AssemblyName>CollisionDetectionSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>True</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>True</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="CollisionDetectionSystem.cs" />
+    <Compile Include="DataObjects\TransponderData.cs" />
+    <Compile Include="DataObjects\Aircraft.cs" />
+    <Compile Include="FunctionalObjects\AudioHandler.cs" />
+    <Compile Include="Interfaces\IAudioHandler.cs" />
+    <Compile Include="Interfaces\IDataProcessor.cs" />
+    <Compile Include="Interfaces\IMathCalcUtility.cs" />
+    <Compile Include="Interfaces\IRadarHandler.cs" />
+    <Compile Include="Interfaces\ITransponderReciever.cs" />
+    <Compile Include="FunctionalObjects\DataProcessor.cs" />
+    <Compile Include="FunctionalObjects\MathCalcUtility.cs" />
+    <Compile Include="FunctionalObjects\RadarHandler.cs" />
+    <Compile Include="FunctionalObjects\TransponderReciever.cs" />
+    <Compile Include="Interfaces\IMockTransponder.cs" />
+    <Compile Include="FunctionalObjects\MockTransponder.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="DataObjects\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="FunctionalObjects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
