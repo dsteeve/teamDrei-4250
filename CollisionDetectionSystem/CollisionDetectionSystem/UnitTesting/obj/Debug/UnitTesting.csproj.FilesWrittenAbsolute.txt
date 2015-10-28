@@ -1,0 +1,9 @@
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/bin/Debug/UnitTesting.dll.mdb
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/bin/Debug/UnitTesting.dll
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/obj/Debug/UnitTesting.dll
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/obj/Debug/UnitTesting.dll.mdb
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/bin/Debug/nunit.framework.dll
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/bin/Debug/MathNet.Numerics.dll
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/bin/Debug/CollisionDetectionSystem.exe
+/Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/bin/Debug/CollisionDetectionSystem.exe.mdb

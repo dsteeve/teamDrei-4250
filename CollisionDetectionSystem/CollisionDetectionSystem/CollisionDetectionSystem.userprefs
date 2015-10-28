@@ -1,0 +1,26 @@
+﻿<Properties StartupItem="CollisionDetectionSystem/CollisionDetectionSystem.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting/FasterAircraftTest.cs">
+    <Files>
+      <File FileName="CollisionDetectionSystem/DataObjects/Aircraft.cs" Line="1" Column="1" />
+      <File FileName="CollisionDetectionSystem/DataObjects/TransponderData.cs" Line="1" Column="1" />
+      <File FileName="CollisionDetectionSystem/DataObjects/VectorAndPosition.cs" Line="1" Column="1" />
+      <File FileName="CollisionDetectionSystem/FunctionalObjects/AudioHandler.cs" Line="1" Column="1" />
+      <File FileName="CollisionDetectionSystem/FunctionalObjects/DataProcessor.cs" Line="1" Column="1" />
+      <File FileName="CollisionDetectionSystem/FunctionalObjects/MathCalcUtility.cs" Line="1" Column="1" />
+      <File FileName="UnitTesting/MathTest.cs" Line="1" Column="1" />
+      <File FileName="CollisionDetectionSystem/Interfaces/IMathCalcUtility.cs" Line="1" Column="1" />
+      <File FileName="UnitTesting/FasterAircraftTest.cs" Line="41" Column="4" />
+      <File FileName="CollisionDetectionSystem/FunctionalObjects/TransponderReciever.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/Main/Game Development/ActionRPG/Assets/Scripts/Entities/EnemyStats.cs" line="7" column="1" />
+      <Breakpoint file="/Users/Main/Game Development/ActionRPG/Assets/Scripts/Entities/Entity.cs" line="34" column="1" />
+      <Breakpoint file="/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/MathTest.cs" line="78" column="1" />
+      <Breakpoint file="/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/FunctionalObjects/MathCalcUtility.cs" line="38" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
