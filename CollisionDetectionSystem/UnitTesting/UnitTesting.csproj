@@ -30,11 +30,11 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="MathNet.Numerics">
       <HintPath>..\packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +46,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CollisionDetectionSystem\CollisionDetectionSystem.csproj">
+    <ProjectReference Include="..\CollisionDetectionSystem.csproj">
       <Project>{E91E1BC9-7BAE-422A-B33E-53D20D7350CA}</Project>
       <Name>CollisionDetectionSystem</Name>
     </ProjectReference>

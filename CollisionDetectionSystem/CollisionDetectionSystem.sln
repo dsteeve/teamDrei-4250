@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollisionDetectionSystem", "CollisionDetectionSystem\CollisionDetectionSystem.csproj", "{E91E1BC9-7BAE-422A-B33E-53D20D7350CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollisionDetectionSystem", "CollisionDetectionSystem.csproj", "{E91E1BC9-7BAE-422A-B33E-53D20D7350CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{DE70EC6B-7ABD-4DFB-BCC4-F360F476621F}"
 EndProject

@@ -5,3 +5,10 @@
 /Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/obj/x86/Debug/CollisionDetectionSystem.exe.mdb
 /Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/bin/Debug/MathNet.Numerics.dll
 /Users/Main/Documents/School/Fall2015/SoftwarePrinciples/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/bin/Debug/nunit.framework.dll
+/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/obj/x86/Debug/CollisionDetectionSystem.exe
+/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/obj/x86/Debug/CollisionDetectionSystem.exe.mdb
+/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/bin/Debug/CollisionDetectionSystem.exe.mdb
+/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/bin/Debug/CollisionDetectionSystem.exe
+/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/bin/Debug/MathNet.Numerics.dll
+/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/bin/Debug/nunit.framework.dll
