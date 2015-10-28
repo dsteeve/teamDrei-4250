@@ -34,11 +34,11 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="MathNet.Numerics">
-      <HintPath>.\packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
+      <HintPath>packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="nunit.framework">
-      <HintPath>.\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -65,8 +65,19 @@
     <Folder Include="DataObjects\" />
     <Folder Include="Interfaces\" />
     <Folder Include="FunctionalObjects\" />
+    <Folder Include="SystemTesting\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="SystemTesting\TestData\slowMovingAircraft\above.txt" />
+    <None Include="SystemTesting\TestData\slowMovingAircraft\below.txt" />
+    <None Include="SystemTesting\TestData\slowMovingAircraft\how to calculate.txt" />
+    <None Include="SystemTesting\TestData\slowMovingAircraft\our plane.txt" />
+    <None Include="SystemTesting\TestData\slowMovingAircraft\same altitude.txt" />
+    <None Include="SystemTesting\TestData\unrealisticPositionChange\altitudeErratic.txt" />
+    <None Include="SystemTesting\TestData\unrealisticPositionChange\latitudeErratic.txt" />
+    <None Include="SystemTesting\TestData\unrealisticPositionChange\longitudeErratic.txt" />
+    <None Include="SystemTesting\TestData\unrealisticPositionChange\multipleIssues.txt" />
+    <None Include="SystemTesting\TestData\unrealisticPositionChange\ourPlane.txt" />
   </ItemGroup>
 </Project>
