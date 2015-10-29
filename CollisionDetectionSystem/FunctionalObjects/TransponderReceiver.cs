@@ -2,13 +2,13 @@
 
 namespace CollisionDetectionSystem
 {
-	public class TransponderReciever: ITransponderReceiver
+	public class TransponderReceiver: ITransponderReceiver
 	{
-		#region ITransponderReciever implementation
+		#region ITransponderReceiver implementation
 
 		public event DataDel PostData;
 
-		public void RecieveData (TransponderData data)
+		public void ReceiveData (TransponderData data)
 		{
 			//Do some stuff
 

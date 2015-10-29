@@ -5,7 +5,7 @@ namespace CollisionDetectionSystem
 	public interface IMockTransponder
 	{
 		void Start();
-		event DataDel RecieveRadarDataEvent;
+		event DataDel ReceiveRadarDataEvent;
 	}
 }
 

@@ -6,15 +6,15 @@ namespace CollisionDetectionSystem
 	{
 		#region IMockTransponder implementation
 
-		public event DataDel RecieveRadarDataEvent;
+		public event DataDel ReceiveRadarDataEvent;
 
 		public void Start ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void BroadcastRecieveDataEvent(TransponderData data){
-			RecieveRadarDataEvent (data);
+		void BroadcastReceiveDataEvent(TransponderData data){
+			ReceiveRadarDataEvent (data);
 		}
 
 		#endregion
