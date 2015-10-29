@@ -1,0 +1,5 @@
+bin/**
+obj/**
+UnitTesting/bin/**
+UnitTesting/obj/**
+*/.DS_Store
