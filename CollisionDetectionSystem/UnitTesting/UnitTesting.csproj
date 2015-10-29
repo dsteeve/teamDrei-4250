@@ -38,8 +38,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FasterAircraftTest.cs" />
+    <Compile Include="FasterAircraftTest.cs">
+      <DependentUpon>packages.config</DependentUpon>
+    </Compile>
     <Compile Include="MathCalcUtilityTest.cs" />
+    <Compile Include="default.cs" />
+    <Compile Include="AircraftTest.cs" />
+    <Compile Include="TransponderDataTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

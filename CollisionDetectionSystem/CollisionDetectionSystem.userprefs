@@ -1,10 +1,9 @@
 ﻿<Properties StartupItem="CollisionDetectionSystem.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting/FasterAircraftTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting\FasterAircraftTest.cs">
     <Files>
-      <File FileName="UnitTesting/FasterAircraftTest.cs" Line="26" Column="3" />
-      <File FileName="CollisionDetectionSystem.cs" Line="1" Column="1" />
-      <File FileName="FunctionalObjects/MockTransponder.cs" Line="1" Column="1" />
+      <File FileName="UnitTesting\FasterAircraftTest.cs" Line="3" Column="7" />
+      <File FileName="UnitTesting\MathCalcUtilityTest.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -14,6 +13,7 @@
       <Breakpoint file="/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/UnitTesting/MathTest.cs" line="78" column="32" />
       <Breakpoint file="/Users/Main/Documents/School/Fall 2015/Software Principles/CollisionDetectionSystem/CollisionDetectionSystem/CollisionDetectionSystem/FunctionalObjects/MathCalcUtility.cs" line="38" column="4" />
       <Breakpoint file="/Users/dsteeve/Source/mygithub/teamDrei-4250/CollisionDetectionSystem/CollisionDetectionSystem.cs" line="2" column="7" />
+      <Breakpoint file="D:\Dropbox\4250Project\teamDrei-4250\CollisionDetectionSystem\UnitTesting\FasterAircraftTest.cs" line="37" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
