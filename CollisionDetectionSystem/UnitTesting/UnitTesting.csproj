@@ -38,8 +38,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MathTest.cs" />
     <Compile Include="FasterAircraftTest.cs" />
+    <Compile Include="MathCalcUtilityTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

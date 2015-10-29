@@ -6,7 +6,7 @@ using MathNet.Numerics.LinearAlgebra;
 namespace UnitTesting
 {
 	[TestFixture ()]
-	public class MathTest
+	public class MathCalcUtilityTest
 	{
 		[Test ()]
 		public void CalculateVectorTest ()
