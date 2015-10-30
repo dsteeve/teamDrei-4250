@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
-using CollisionDetectionSystem;
 using MathNet.Numerics.LinearAlgebra;
+using CollisionDetectionSystem;
 
 namespace UnitTesting
 {

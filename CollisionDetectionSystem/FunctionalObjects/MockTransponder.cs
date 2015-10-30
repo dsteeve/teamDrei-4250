@@ -8,12 +8,15 @@ namespace CollisionDetectionSystem
 
 		public event DataDel ReceiveRadarDataEvent;
 
-		public void Start ()
+		public void Start ()  // will get an array to go through it every second
 		{
-			throw new NotImplementedException ();
+			throw new NotImplementedException ();  //methods to read in and translate data to build TranponderDatay types
 		}
 
-		void BroadcastReceiveDataEvent(TransponderData data){
+		//sends event with transponder data this is the one the
+		//transponder receiver is listening to
+		void BroadcastReceiveDataEvent(TransponderData data) 
+		{
 			ReceiveRadarDataEvent (data);
 		}
 

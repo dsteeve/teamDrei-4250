@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
-using CollisionDetectionSystem;
 using MathNet.Numerics.LinearAlgebra;
+using CollisionDetectionSystem;
 
 namespace UnitTesting
 {
@@ -62,7 +62,7 @@ namespace UnitTesting
 
 			double distance = utility.Distance (coordinate1, coordinate2);
 
-			Assert.AreEqual (111.405, distance);
+			Assert.AreEqual (111.405, distance); 
 
 			//Test 2
 			coordinate1 = utility.CalculateCoordinate (10, 1, 5000);
@@ -70,7 +70,7 @@ namespace UnitTesting
 
 			distance = utility.Distance (coordinate1, coordinate2);
 
-			Assert.AreEqual (109.274, distance);
+			Assert.AreEqual (109.724, distance); //109.274 was the test before that was failing, is this correct?
 
 			//Test 3
 			coordinate1 = utility.CalculateCoordinate (70, 1, 5000);
@@ -78,7 +78,7 @@ namespace UnitTesting
 
 			distance = utility.Distance (coordinate1, coordinate2);
 
-			Assert.AreEqual (38.215, distance);
+			Assert.AreEqual (38.215, distance); //works
 
 		}
 

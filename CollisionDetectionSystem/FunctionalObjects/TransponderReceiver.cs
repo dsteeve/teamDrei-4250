@@ -10,7 +10,7 @@ namespace CollisionDetectionSystem
 
 		public void ReceiveData (TransponderData data)
 		{
-			//Do some stuff
+			//check valid data and drop it if invalid 
 
 			PrepareDataForPost (data);
 		}
