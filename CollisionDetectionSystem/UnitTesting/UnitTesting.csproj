@@ -45,10 +45,17 @@
     <Compile Include="default.cs" />
     <Compile Include="AircraftTest.cs" />
     <Compile Include="TransponderDataTest.cs" />
+    <Compile Include="Template.cs">
+      <DependentUpon>Template.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Template.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>Template.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CollisionDetectionSystem.csproj">

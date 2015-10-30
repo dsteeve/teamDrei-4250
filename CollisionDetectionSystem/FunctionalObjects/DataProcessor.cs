@@ -6,6 +6,7 @@ namespace CollisionDetectionSystem
 {
 	public class DataProcessor : IDataProcessor
 	{
+		//B1E24F
 		public Aircraft ThisAircraft { get; set; }
 		public List<Aircraft> Intruders { get; set; }
 
@@ -21,26 +22,38 @@ namespace CollisionDetectionSystem
 
 		public event AircraftDel AircraftDidEnterRadarRangeEvent;
 
-		public void OnPostDataEvent (TransponderData data)
+		//calls update aircraft
+		//to be decided 
+		public void OnPostDataEvent (TransponderData data) 
 		{
+			//case statement to update ourselves or another aircraft
+			//UpdateAircraftFromData (data);
 			throw new NotImplementedException ();
 		}
 
-		public void UpdateAircraftFromData (TransponderData data)
+		// convert to cordinates 
+		// look for air craft and list and update if in list, else create new
+		private void UpdateAircraftFromData (TransponderData data)
 		{
+			//DetermineProximityOfEachIntruder(aircraft)
 			throw new NotImplementedException ();
 		}
 
+		//MathCalcUtility to determine proximity of intruder when we update ourselves
 		public void DetermineProximityOfEachIntruder ()
 		{
+			//walks through the list and calls DetermineProximityOfIntruder
 			throw new NotImplementedException ();
 		}
 
+		//MathCalcUtility to determine proximity of our aircraft to another
 		public void DetermineProximityOfIntruder (Aircraft intruder)
 		{
 			//If in proximity...
 			//Calculate time...
 			AircraftWillIntersectInTimeEvent(0f); //Some time
+			//log proximity
+
 
 			//If in radar range...
 			AircraftDidEnterRadarRangeEvent(intruder);

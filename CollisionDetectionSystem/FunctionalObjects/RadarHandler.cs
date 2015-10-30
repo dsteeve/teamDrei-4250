@@ -6,12 +6,14 @@ namespace CollisionDetectionSystem
 	{
 		#region IRadarHandler implementation
 
+		//if intruder is 6 nm in range add to radar screen
 		public void AircraftDidEnterRadarRangeEvent (Aircraft intruder)
 		{
+			//case for updateRadarScreen call
 			throw new NotImplementedException ();
 		}
 
-		public void UpdateRadarScreen ()
+		private void UpdateRadarScreen ()
 		{
 			throw new NotImplementedException ();
 		}
