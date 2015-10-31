@@ -13,7 +13,7 @@ namespace CollisionDetectionSystem
 			throw new NotImplementedException ();
 		}
 
-		private void UpdateRadarScreen ()
+		public void UpdateRadarScreen ()
 		{
 			throw new NotImplementedException ();
 		}

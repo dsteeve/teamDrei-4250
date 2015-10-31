@@ -11,11 +11,13 @@ namespace UnitTesting
 		[Test ()]
 		public void TransponderData ()
 		{
-			TransponderData td = new TransponderData (100.5, -15.9, 0, "trial");
+			TransponderData td = new TransponderData ("14:00:00Z.000 T", "12345F", 100.5, -15.9, 6000, "GW400");
+			//TODO:  need to figure out date stuff
+			Assert.AreEqual ("12345F", td.Identifier);
 			Assert.AreEqual (100.5, td.Latitude);
 			Assert.AreEqual (-15.9, td.Longitude);
-			Assert.AreEqual (0, td.Altitude);
-			Assert.AreEqual ("trial", td.Identifier);
+			Assert.AreEqual (6000, td.Altitude);
+			Assert.AreEqual ("GW400", td.SquawkCode);
 
 		}
 	}

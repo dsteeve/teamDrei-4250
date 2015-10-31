@@ -33,7 +33,7 @@ namespace CollisionDetectionSystem
 
 		// convert to cordinates 
 		// look for air craft and list and update if in list, else create new
-		private void UpdateAircraftFromData (TransponderData data)
+		public void UpdateAircraftFromData (TransponderData data)
 		{
 			//DetermineProximityOfEachIntruder(aircraft)
 			throw new NotImplementedException ();
