@@ -6,7 +6,7 @@ namespace CollisionDetectionSystem
 	{
 		#region ITransponderReceiver implementation
 
-		public event DataDel PostData;
+		public event DataDel PostDataEvent;
 
 		public void ReceiveData (TransponderData data)
 		{
@@ -19,7 +19,7 @@ namespace CollisionDetectionSystem
 		{
 			//Do some stuff
 
-			PostData (data); //Call event, anything attached to this event delegate will be executed.
+			PostDataEvent (data); //Call event, anything attached to this event delegate will be executed.
 		}
 
 		#endregion

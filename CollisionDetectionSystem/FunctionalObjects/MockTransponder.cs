@@ -6,18 +6,20 @@ namespace CollisionDetectionSystem
 	{
 		#region IMockTransponder implementation
 
-		public event DataDel ReceiveRadarDataEvent;
+		public event DataDel SendDataEvent;
 
-		public void Start ()  // will get an array to go through it every second
+		// will get an array of data to go through 
+		// and announce location every 500ms
+		public void Start ()  
 		{
 			throw new NotImplementedException ();  //methods to read in and translate data to build TranponderDatay types
 		}
 
-		//sends event with transponder data this is the one the
+		//Sends event with transponder data this is the one the
 		//transponder receiver is listening to
-		void BroadcastReceiveDataEvent(TransponderData data) 
+		void BroadcastDataEvent(TransponderData data) 
 		{
-			ReceiveRadarDataEvent (data);
+			SendDataEvent (data);
 		}
 
 		#endregion

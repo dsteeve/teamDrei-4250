@@ -8,7 +8,7 @@ namespace CollisionDetectionSystem
 	{
 		void ReceiveData(TransponderData data);
 		void PrepareDataForPost(TransponderData data);
-		event DataDel PostData;
+		event DataDel PostDataEvent;
 	}
 }
 
