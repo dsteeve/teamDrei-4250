@@ -9,23 +9,23 @@ namespace CollisionDetectionSystem
 	public class TransponderData
 	{
 		public DateTimeOffset PingTimestamp {  get; private set; }
-		public string Identifier {  get; private set; }
-		public double Longitude {  get; private set; }
+		public string Icao {  get; private set; }
 		public double Latitude {  get; private set; }
+		public double Longitude {  get; private set; }
 		public double Altitude {  get; private set; }
 		public string SquawkCode {  get; private set; }
 
 		/** 
 		 * constructor
 		 */
-		public TransponderData (string pingTimestamp, string identifier, double latitude, double longitude, double altitude, string squawkCode)
+		public TransponderData (string pingTimestamp, string icao, double latitude, double longitude, double altitude, string squawkCode)
 		{
 			setPingTimestamp(pingTimestamp);
-			Identifier = identifier;
-			Longitude = longitude;
+			Icao = icao;
 			Latitude = latitude;
+			Longitude = longitude;
 			Altitude = altitude;
-			SquawkCode = squawkCode;
+			SquawkCode = squawkCode; //flight number for non-ga flights.
 
 		}
 
