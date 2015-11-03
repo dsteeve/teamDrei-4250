@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CollisionDetectionSystem
 {
@@ -7,10 +8,14 @@ namespace CollisionDetectionSystem
 
 	public interface IDataProcessor
 	{
+		Aircraft ThisAircraft { get; set; }
+		List<Aircraft> Intruders { get; set; }
+
 		void OnPostDataEvent(TransponderData data);
 		void UpdateAircraftFromData(TransponderData data);
 		void DetermineProximityOfEachIntruder();
 		void DetermineProximityOfIntruder(Aircraft intruder);
+
 		event TimeDel AircraftWillIntersectInTimeEvent;
 		event AircraftDel AircraftDidEnterRadarRangeEvent;
 	}
