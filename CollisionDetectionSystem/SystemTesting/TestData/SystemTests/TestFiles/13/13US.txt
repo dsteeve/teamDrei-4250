@@ -1,4 +1,4 @@
-Speed is near: 54.04 nautical miles per hour
+#Speed is near: 54.04 nautical miles per hour
 12:00:00Z.000 T,B1E24F,40.002500,-90.000000,0,AE1200
 12:00:00Z.500 T,B1E24F,40.002375,-90.000000,0,AE1200
 12:00:01Z.000 T,B1E24F,40.002250,-90.000000,0,AE1200
