@@ -10,22 +10,24 @@ namespace CollisionDetectionSystem
 		//call threat level
 		public void OnAircraftWillIntersectInTimeEvent (float time)
 		{
-			DetermineThreatLevel (time);
-			throw new NotImplementedException ();
+			Threat theLevel = DetermineThreatLevel (time);
+			PlayAudio (theLevel);
+
 		}
 
 		//determines threat level and sends into playAudio if needed
 		//time is in number seconds
-		public void DetermineThreatLevel (float time)
+		public Threat DetermineThreatLevel (float time)
 		{
-			//case for theat level determined 30 for orange, 60 for yellow, 15 for red
-			throw new NotImplementedException ();
+			//case for theat level determined  <30 for orange, < 60 for yellow, < 15 for red
+			return Threat.none;
 		}
 
 		//send in an enum for threat level
-		public void PlayAudio ()
+		//return true if audio played else false
+		public Boolean PlayAudio (Threat threat)
 		{
-			throw new NotImplementedException ();
+			return false;
 		}
 
 		#endregion
