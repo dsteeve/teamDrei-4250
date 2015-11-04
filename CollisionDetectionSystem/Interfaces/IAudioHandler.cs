@@ -4,9 +4,10 @@ namespace CollisionDetectionSystem
 {
 	public interface IAudioHandler
 	{
+
 		void OnAircraftWillIntersectInTimeEvent (float time);
-		void DetermineThreatLevel(float time);
-		void PlayAudio();
+		Threat DetermineThreatLevel(float time);
+		Boolean PlayAudio(Threat threat);
 	}
 }
 

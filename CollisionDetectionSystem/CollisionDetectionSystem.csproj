@@ -59,6 +59,7 @@
     <Compile Include="FunctionalObjects\MockTransponder.cs" />
     <Compile Include="FunctionalObjects\TransponderReceiver.cs" />
     <Compile Include="Interfaces\ITransponderReceiver.cs" />
+    <Compile Include="FunctionalObjects\Threat.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -66,6 +67,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="FunctionalObjects\" />
     <Folder Include="SystemTesting\" />
+    <Folder Include="SystemTesting\TestData\SystemTests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -79,5 +81,38 @@
     <None Include="SystemTesting\TestData\unrealisticPositionChange\longitudeErratic.txt" />
     <None Include="SystemTesting\TestData\unrealisticPositionChange\multipleIssues.txt" />
     <None Include="SystemTesting\TestData\unrealisticPositionChange\ourPlane.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\SystemTesting.docx" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\1\1INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\1\1US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\10\10INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\10\10US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\11\11INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\11\11US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\12\12INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\12\12US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\13\13INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\13\13US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\14\14INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\14\14US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\15\15INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\15\15US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\16\16INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\16\16US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\2\2INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\2\2US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\3\3INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\3\3US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\4\4INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\4\4US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\5\5INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\5\5US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\6\6INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\6\6US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\7\7INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\7\7US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\8\8INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\8\8US.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\9\9INT.txt" />
+    <None Include="SystemTesting\TestData\SystemTests\TestFiles\9\9US.txt" />
   </ItemGroup>
 </Project>
