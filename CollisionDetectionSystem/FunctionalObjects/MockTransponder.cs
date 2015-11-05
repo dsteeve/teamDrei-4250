@@ -8,10 +8,12 @@ namespace CollisionDetectionSystem
 
 		public event DataDel SendDataEvent;
 
-		// will get an array of data to go through 
+		// will get a directory name to read the files in
+		// the files will have a list of fake data to go through 
 		// and announce location every 500ms
-		public void Start ()  
+		public void Start (String testDirName)  
 		{
+			System.Console.WriteLine ("test dir name is : " + testDirName);
 			throw new NotImplementedException ();  //methods to read in and translate data to build TranponderDatay types
 		}
 
