@@ -45,6 +45,9 @@
     <Compile Include="TransponderDataTest.cs" />
     <Compile Include="DataProcessorTest.cs" />
     <Compile Include="AudioHandlerTest.cs" />
+    <Compile Include="mainTest.cs" />
+    <Compile Include="NoMovementTest.cs" />
+    <Compile Include="RadarHandlerTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

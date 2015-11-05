@@ -1,12 +1,22 @@
 ﻿<Properties StartupItem="CollisionDetectionSystem.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DataObjects/TransponderData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FunctionalObjects/MockTransponder.cs">
     <Files>
-      <File FileName="DataObjects/TransponderData.cs" Line="43" Column="1" />
-      <File FileName="UnitTesting/TransponderDataTest.cs" Line="5" Column="1" />
-      <File FileName="DataObjects/Aircraft.cs" Line="8" Column="2" />
-      <File FileName="CollisionDetectionSystem.cs" Line="7" Column="39" />
+      <File FileName="UnitTesting/AudioHandlerTest.cs" Line="83" Column="4" />
+      <File FileName="Interfaces/IAudioHandler.cs" Line="14" Column="1" />
+      <File FileName="FunctionalObjects/TransponderReceiver.cs" Line="29" Column="1" />
+      <File FileName="FunctionalObjects/RadarHandler.cs" Line="1" Column="1" />
+      <File FileName="FunctionalObjects/MockTransponder.cs" Line="30" Column="1" />
+      <File FileName="FunctionalObjects/MathCalcUtility.cs" Line="1" Column="1" />
+      <File FileName="FunctionalObjects/DataProcessor.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="CollisionDetectionSystem" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
