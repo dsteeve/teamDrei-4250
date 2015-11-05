@@ -21,9 +21,24 @@ namespace CollisionDetectionSystem
 			MockTransponder = new MockTransponder ();
 		}
 
+		/**
+		 * start in normal mode
+		 * 
+		 */
 		public void Start(){
 			SetupDelegates ();
-			StartMockTransponder ();
+		}
+
+		/**
+		 * Start in test mode
+		 * 
+		 */
+		public void Start(String testdirname){
+			Start ();
+			if (testdirname != null) {
+				StartMockTransponder (testdirname);
+				SetupTestDelegates ();
+			}
 		}
 
 		//Sets up all the delegate events, when one of these delegate events are called all methods
@@ -35,8 +50,17 @@ namespace CollisionDetectionSystem
 			DataProcessor.AircraftWillIntersectInTimeEvent += AudioHandler.OnAircraftWillIntersectInTimeEvent;
 		}
 
-		void StartMockTransponder(){
-			MockTransponder.Start ();
+		void SetupTestDelegates(){
+			//todo:  wireup radar and audio handlers to testharness
+		}
+
+		/**
+		 * start the mock transponder and act like we are hearing 
+		 * actual transponder pings
+		 * 
+		 */
+		void StartMockTransponder(String testDirName){
+			MockTransponder.Start (testDirName);
 		}
 			
 	}
