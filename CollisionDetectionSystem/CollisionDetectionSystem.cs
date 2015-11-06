@@ -35,8 +35,11 @@ namespace CollisionDetectionSystem
 		 */
 		public void Start(String testdirname){
 			Start ();
-			if (testdirname != null) {
-				StartMockTransponder (testdirname);
+
+			if (String.IsNullOrEmpty (testdirname) || String.IsNullOrWhiteSpace(testdirname)) {
+				return;
+			} else {
+				StartMockTransponder (testdirname.Trim());
 				SetupTestDelegates ();
 			}
 		}

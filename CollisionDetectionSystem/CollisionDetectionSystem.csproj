@@ -60,6 +60,7 @@
     <Compile Include="FunctionalObjects\TransponderReceiver.cs" />
     <Compile Include="Interfaces\ITransponderReceiver.cs" />
     <Compile Include="FunctionalObjects\Threat.cs" />
+    <Compile Include="FunctionalObjects\StringUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
