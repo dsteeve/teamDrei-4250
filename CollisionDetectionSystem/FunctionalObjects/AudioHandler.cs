@@ -19,8 +19,23 @@ namespace CollisionDetectionSystem
 		//time is in number seconds
 		public Threat DetermineThreatLevel (float time)
 		{
+			
 			//case for theat level determined  <30 for orange, < 60 for yellow, < 15 for red
-			return Threat.none;
+			if (time > 60) {
+				return Threat.none;
+				} 
+			else if (time <= 60 && time > 30) {
+					return Threat.yellow;
+				} 
+			else if (time <= 30 && time > 15) {
+					return Threat.orange;
+				} 
+			else if (time <= 15 && time > 0) {
+					return Threat.red;
+				}
+			else{
+				return Threat.none;
+			}
 		}
 
 		//send in an enum for threat level

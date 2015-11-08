@@ -63,21 +63,21 @@ namespace UnitTesting
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Boolean played = audHandler.PlayAudio (Threat.yellow);
-			Assert.AreSame (played, true);
+			Assert.AreEqual (played, true);
 		}
 		[Test ()]
 		public void playAudioOrange ()
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Boolean played = audHandler.PlayAudio (Threat.orange);
-			Assert.AreSame (played, true);
+			Assert.AreEqual (played, true);
 		}
 		[Test ()]
 		public void playAudioRed ()
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Boolean played = audHandler.PlayAudio (Threat.red);
-			Assert.AreSame (played, true);
+			Assert.AreEqual (played, true);
 		}
 
 		[Test ()]
@@ -85,7 +85,7 @@ namespace UnitTesting
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Boolean played = audHandler.PlayAudio (Threat.none);
-			Assert.AreSame (played, false);
+			Assert.AreEqual (played, false);
 		}
 	}
 }

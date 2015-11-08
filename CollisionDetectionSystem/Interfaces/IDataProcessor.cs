@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace CollisionDetectionSystem
 {
+	//are these public once implemented?
 	public delegate void TimeDel(float time);
 	public delegate void AircraftDel(Aircraft aircraft);
 
