@@ -1,5 +1,27 @@
 ﻿<Properties StartupItem="CollisionDetectionSystem.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting\mainTest.cs">
+    <Files>
+      <File FileName="Main.cs" Line="18" Column="16" />
+      <File FileName="UnitTesting\mainTest.cs" Line="35" Column="4" />
+      <File FileName="Interfaces\IDataProcessor.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="CollisionDetectionSystem" expanded="True">
+            <Node name="UnitTesting" expanded="True">
+              <Node name="mainTest" expanded="True">
+                <Node name="mainTester" selected="True" />
+              </Node>
+              <Node name="UnitTesting" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+=======
   <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting\TransponderDataTest.cs">
     <Files>
       <File FileName="UnitTesting\AudioHandlerTest.cs" Line="21" Column="26" />
@@ -35,6 +57,7 @@
       <File FileName="UnitTesting\NoMovementTest.cs" Line="55" Column="10" />
       <File FileName="UnitTesting\packages.config" Line="1" Column="1" />
     </Files>
+>>>>>>> master
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

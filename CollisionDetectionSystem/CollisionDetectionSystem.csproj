@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
-    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="AssemblyInfo.cs">
+      <DependentUpon>CollisionDetectionSystem.cs</DependentUpon>
+    </Compile>
     <Compile Include="CollisionDetectionSystem.cs" />
     <Compile Include="DataObjects\TransponderData.cs" />
     <Compile Include="DataObjects\Aircraft.cs" />

@@ -70,7 +70,7 @@ namespace UnitTesting
 
 			distance = utility.Distance (coordinate1, coordinate2);
 
-			Assert.AreEqual (109.724, distance); //109.274 was the test before that was failing, is this correct?
+			Assert.AreEqual (109.724, distance); 
 
 			//Test 3
 			coordinate1 = utility.CalculateCoordinate (70, 1, 5000);
