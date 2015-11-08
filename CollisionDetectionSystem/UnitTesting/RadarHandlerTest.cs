@@ -111,6 +111,10 @@ namespace UnitTesting
 			distance *= 0.539956804;	
 			Assert.AreEqual (3.779697628, distance);
 
+<<<<<<< HEAD
+=======
+		//	Assert.AreEqual (true, rh.AircraftDidEnterRadarRangeEvent (them));
+>>>>>>> master
 		}
 	}
 }

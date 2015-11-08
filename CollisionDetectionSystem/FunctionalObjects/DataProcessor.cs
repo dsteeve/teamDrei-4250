@@ -6,7 +6,7 @@ namespace CollisionDetectionSystem
 {
 	public class DataProcessor : IDataProcessor
 	{
-		//B1E24F
+		//OUR ICAO CODE B1E24F
 		public Aircraft ThisAircraft { get; set; }
 		public List<Aircraft> Intruders { get; set; }
 

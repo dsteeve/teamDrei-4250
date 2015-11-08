@@ -18,10 +18,14 @@ namespace CollisionDetectionSystem
 					system.Start();
 				} else {
 					if (args[0].StartsWith("testdir")) {
-						system.Start(getArgValue(args[0]));
+						system.Start(StringUtility.getArgValue(args[0]));
 					} else {
-						System.Console.WriteLine ("Usage: CollisionDetecionSystem testDir=testDirname to run in test mode");
-					} 
+						if (args[0].StartsWith("testdir")) {
+							system.Start(getArgValue(args[0]));
+						} else {
+							System.Console.WriteLine ("Usage: CollisionDetecionSystem testDir=testDirname to run in test mode");
+						} 
+					}
 				}
 				return 0;
 			} catch (Exception e){
@@ -32,18 +36,6 @@ namespace CollisionDetectionSystem
 		}
 	
 
-		/**
-		 * split out the name=value
-		 * return the value
-		 */
 
-		private static String getArgValue(String namevaluepair) {
-			String[] values = namevaluepair.Split ('=');
-			if (values.Length == 2) {
-				return values [1];
-			} else {
-				return null;
-			}
-		}
 	}
 }

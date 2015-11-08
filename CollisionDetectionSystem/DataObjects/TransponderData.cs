@@ -35,6 +35,7 @@ namespace CollisionDetectionSystem
 			PingTimestamp = DateTime.Parse(strTimestamp);
 		}
 
+		//nothing calls this yet
 		private DateTimeOffset covertToDateTimeOffset (String strTs) {
 			DateTimeOffset dateTimeTzobj = new DateTimeOffset ();
 			//TODO:  use the strTs to create the datetimeoffset.
