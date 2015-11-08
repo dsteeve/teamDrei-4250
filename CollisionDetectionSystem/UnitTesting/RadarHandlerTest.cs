@@ -111,10 +111,25 @@ namespace UnitTesting
 			distance *= 0.539956804;	
 			Assert.AreEqual (3.779697628, distance);
 
-<<<<<<< HEAD
-=======
-		//	Assert.AreEqual (true, rh.AircraftDidEnterRadarRangeEvent (them));
->>>>>>> master
+
+			//	Assert.AreEqual (true, rh.AircraftDidEnterRadarRangeEvent (them));
+		}		
+
+		[Test ]
+		public void DistancePersonalRandom ()
+		{
+			MathCalcUtility utility = new MathCalcUtility ();
+
+			Vector<double> coordinate1 = utility.CalculateCoordinate (40,-89,3000);
+			Vector<double> coordinate2 = utility.CalculateCoordinate (41,-89,3000);
+
+			double distance = utility.Distance (coordinate1, coordinate2); //7km
+			distance *= 0.539956804;	
+			Console.WriteLine (distance);
+			Assert.That (59.9, Is.LessThanOrEqualTo(distance));
+			//distance is greater than 59.9 nm
+
+			//	Assert.AreEqual (true, rh.AircraftDidEnterRadarRangeEvent (them));
 		}
 	}
 }

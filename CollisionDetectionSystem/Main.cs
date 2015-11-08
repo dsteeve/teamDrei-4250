@@ -21,7 +21,7 @@ namespace CollisionDetectionSystem
 						system.Start(StringUtility.getArgValue(args[0]));
 					} else {
 						if (args[0].StartsWith("testdir")) {
-							system.Start(getArgValue(args[0]));
+							system.Start(StringUtility.getArgValue(args[0]));
 						} else {
 							System.Console.WriteLine ("Usage: CollisionDetecionSystem testDir=testDirname to run in test mode");
 						} 
@@ -34,8 +34,5 @@ namespace CollisionDetectionSystem
 			}
 
 		}
-	
-
-
 	}
 }
