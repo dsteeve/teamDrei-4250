@@ -45,12 +45,12 @@
     <Compile Include="TransponderDataTest.cs" />
     <Compile Include="DataProcessorTest.cs" />
     <Compile Include="AudioHandlerTest.cs" />
-    <Compile Include="mainTest.cs" />
     <Compile Include="NoMovementTest.cs" />
     <Compile Include="RadarHandlerTest.cs" />
     <Compile Include="StringUtilityTest.cs" />
     <Compile Include="TransponderReceiverTest.cs" />
     <Compile Include="MockTransponderTest.cs" />
+    <Compile Include="CollisionDetectionSystemTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

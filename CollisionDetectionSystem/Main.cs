@@ -11,7 +11,7 @@ namespace CollisionDetectionSystem
 
 		public static int Main (string[] args)
 		{
-			CollisionDetectionSystem system = new CollisionDetectionSystem ();
+			CollisionDetectionSystemClass system = new CollisionDetectionSystemClass ();
 
 			try {
 				if (args.Length == 0) {
