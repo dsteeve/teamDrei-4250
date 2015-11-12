@@ -11,6 +11,7 @@ namespace UnitTesting
 		[Test ()]
 		public void CalculateVectorTest ()
 		{
+			
 			//Logical data test
 			MathCalcUtility utility = new MathCalcUtility ();
 
@@ -86,46 +87,28 @@ namespace UnitTesting
 		public void IntersectionTest()
 		{
 			//Test1
-//			MathCalcUtility utility = new MathCalcUtility ();
-//
-//			TransponderData plane1DataFrom = new TransponderData (1, 2, 0, "1");
-//			TransponderData plane1DataTo = new TransponderData (2, 3, 0, "1");
-//
-//			TransponderData plane2DataFrom = new TransponderData (5, 2, 0, "2");
-//			TransponderData plane2DataTo = new TransponderData (4, 3, 0, "2");
-//
-//			Vector<double> plane1vec = utility.CalculateVector (plane1DataFrom, plane1DataTo);
-//			Vector<double> plane2vec = utility.CalculateVector (plane2DataFrom, plane2DataTo);
-//
-//			Aircraft aircraft1 = new Aircraft ("1", plane1vec);
-//			aircraft1.DataBuffer.Add (plane1DataTo);
-//
-//			Aircraft aircraft2 = new Aircraft ("2", plane2vec);
-//			aircraft2.DataBuffer.Add (plane2DataTo);
-//
-//			double time = utility.Intersection (aircraft1, aircraft2, 1f);
-//
-//			Assert.AreEqual (1.0, time);
-//
-//			//Test2
-//			plane1DataFrom = new TransponderData (1, 2, 0, "1");
-//			plane1DataTo = new TransponderData (2, 3, 0, "1");
-//
-//			plane2DataFrom = new TransponderData (7, 2, 0, "2");
-//			plane2DataTo = new TransponderData (6, 3, 0, "2");
-//
-//			plane1vec = utility.CalculateVector (plane1DataFrom, plane1DataTo);
-//			plane2vec = utility.CalculateVector (plane2DataFrom, plane2DataTo);
-//
-//			aircraft1 = new Aircraft ("1", plane1vec);
-//			aircraft1.DataBuffer.Add (plane1DataTo);
-//
-//			aircraft2 = new Aircraft ("2", plane2vec);
-//			aircraft2.DataBuffer.Add (plane2DataTo);
-//
-//			time = utility.Intersection (aircraft1, aircraft2, 1f);
-//
-//			Assert.AreEqual (2.0, time);
+			MathCalcUtility utility = new MathCalcUtility ();
+
+
+			Vector<double> plane1DataFrom = Vector<double>.Build.DenseOfArray(new double[3]{0, -1, 0});
+			Vector<double> plane1DataTo = Vector<double>.Build.DenseOfArray(new double[3]{1, 0, 0});
+
+			Vector<double> plane2DataFrom = Vector<double>.Build.DenseOfArray(new double[3]{6, -1, 0});
+			Vector<double> plane2DataTo = Vector<double>.Build.DenseOfArray(new double[3]{5, 0, 0});
+
+			Vector<double> plane1vec = utility.CalculateVector (plane1DataFrom, plane1DataTo);
+			Vector<double> plane2vec = utility.CalculateVector (plane2DataFrom, plane2DataTo);
+
+			Aircraft aircraft1 = new Aircraft ("1", plane1vec);
+			aircraft1.DataBuffer.Add (plane1DataTo);
+
+			Aircraft aircraft2 = new Aircraft ("2", plane2vec);
+			aircraft2.DataBuffer.Add (plane2DataTo);
+
+			double time = utility.Intersection (aircraft1, aircraft2, 1f);
+
+			Assert.AreEqual (1.0, time);
+
 		}
 	}
 }
