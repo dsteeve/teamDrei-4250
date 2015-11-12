@@ -32,7 +32,7 @@ namespace CollisionDetectionSystem
 				return -1;
 			}
 
-			//double plusResult = -1 * dDotW + Math.Sqrt(decider) / wDotW;
+			double plusResult = -1 * dDotW + Math.Sqrt(decider) / wDotW;
 			double minusResult = -1 * dDotW - Math.Sqrt(decider) / wDotW; //I believe this is when they first touch, the plus result is when they exit.
 
 			if (minusResult < 0) {
