@@ -1,63 +1,28 @@
 ﻿<Properties StartupItem="CollisionDetectionSystem.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting\mainTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Main.cs">
     <Files>
-      <File FileName="Main.cs" Line="18" Column="16" />
-      <File FileName="UnitTesting\mainTest.cs" Line="35" Column="4" />
-      <File FileName="Interfaces\IDataProcessor.cs" Line="1" Column="1" />
+      <File FileName="Main.cs" Line="39" Column="1" />
+      <File FileName="UnitTesting\RadarHandlerTest.cs" Line="1" Column="1" />
+      <File FileName="CollisionDetectionSystem.cs" Line="36" Column="18" />
     </Files>
     <Pads>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
+      <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CollisionDetectionSystem" expanded="True">
-            <Node name="UnitTesting" expanded="True">
-              <Node name="mainTest" expanded="True">
-                <Node name="mainTester" selected="True" />
-              </Node>
-              <Node name="UnitTesting" expanded="True" />
+            <Node name="CollisionDetectionSystem" expanded="True">
+              <Node name="Main.cs" selected="True" />
             </Node>
+            <Node name="UnitTesting" expanded="True" />
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="CollisionDetectionSystem" expanded="True" selected="True" />
+        </State>
+      </Pad>
     </Pads>
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting\TransponderDataTest.cs">
-    <Files>
-      <File FileName="UnitTesting\AudioHandlerTest.cs" Line="21" Column="26" />
-      <File FileName="Interfaces\IAudioHandler.cs" Line="8" Column="17" />
-      <File FileName="FunctionalObjects\TransponderReceiver.cs" Line="22" Column="20" />
-      <File FileName="FunctionalObjects\RadarHandler.cs" Line="1" Column="1" />
-      <File FileName="FunctionalObjects\MockTransponder.cs" Line="24" Column="25" />
-      <File FileName="FunctionalObjects\MathCalcUtility.cs" Line="86" Column="3" />
-      <File FileName="FunctionalObjects\DataProcessor.cs" Line="59" Column="41" />
-      <File FileName="DataObjects\Aircraft.cs" Line="17" Column="23" />
-      <File FileName="DataObjects\TransponderData.cs" Line="45" Column="2" />
-      <File FileName="FunctionalObjects\AudioHandler.cs" Line="45" Column="17" />
-      <File FileName="FunctionalObjects\StringUtility.cs" Line="17" Column="24" />
-      <File FileName="FunctionalObjects\Threat.cs" Line="1" Column="1" />
-      <File FileName="UnitTesting\AircraftTest.cs" Line="1" Column="1" />
-      <File FileName="UnitTesting\RadarHandlerTest.cs" Line="30" Column="1" />
-      <File FileName="UnitTesting\TransponderDataTest.cs" Line="21" Column="43" />
-      <File FileName="Interfaces\IDataProcessor.cs" Line="15" Column="3" />
-      <File FileName="Interfaces\IMathCalcUtility.cs" Line="7" Column="71" />
-      <File FileName="Interfaces\IRadarHandler.cs" Line="8" Column="5" />
-      <File FileName="Interfaces\ITransponderReceiver.cs" Line="11" Column="30" />
-      <File FileName="Main.cs" Line="28" Column="94" />
-      <File FileName="CollisionDetectionSystem.cs" Line="51" Column="65" />
-      <File FileName="UnitTesting\MathCalcUtilityTest.cs" Line="51" Column="44" />
-      <File FileName="UnitTesting\FasterAircraftTest.cs" Line="27" Column="12" />
-      <File FileName="Interfaces\IMockTransponder.cs" Line="8" Column="23" />
-      <File FileName="UnitTesting\StringUtilityTest.cs" Line="13" Column="36" />
-      <File FileName="AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="packages.config" Line="1" Column="1" />
-      <File FileName="UnitTesting\DataProcessorTest.cs" Line="36" Column="50" />
-      <File FileName="UnitTesting\default.cs" Line="1" Column="1" />
-      <File FileName="UnitTesting\mainTest.cs" Line="1" Column="1" />
-      <File FileName="UnitTesting\NoMovementTest.cs" Line="55" Column="10" />
-      <File FileName="UnitTesting\packages.config" Line="1" Column="1" />
-    </Files>
->>>>>>> master
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

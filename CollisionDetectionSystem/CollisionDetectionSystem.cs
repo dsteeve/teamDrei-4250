@@ -4,7 +4,7 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace CollisionDetectionSystem
 {
-	public class CollisionDetectionSystem
+	public class CollisionDetectionSystemClass
 	{
 		private IAudioHandler AudioHandler { get; set; }
 		private IDataProcessor DataProcessor { get; set; }
@@ -12,7 +12,7 @@ namespace CollisionDetectionSystem
 		private ITransponderReceiver TransponderReceiver { get; set; }
 		private IMockTransponder MockTransponder { get; set; }
 
-		public CollisionDetectionSystem ()
+		public CollisionDetectionSystemClass ()
 		{
 			AudioHandler = new AudioHandler ();
 			DataProcessor = new DataProcessor ();
