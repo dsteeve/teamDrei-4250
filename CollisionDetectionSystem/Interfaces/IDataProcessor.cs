@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CollisionDetectionSystem
 {
 	//are these public once implemented?
-	public delegate void TimeDel(float time);
+	public delegate void TimeDel(double time);
 	public delegate void AircraftDel(Aircraft aircraft);
 
 	public interface IDataProcessor
@@ -13,9 +13,6 @@ namespace CollisionDetectionSystem
 		List<Aircraft> Intruders { get; set; }
 
 		void OnPostDataEvent(TransponderData data);
-		void UpdateAircraftFromData(TransponderData data);
-		void DetermineProximityOfEachIntruder();
-		void DetermineProximityOfIntruder(Aircraft intruder);
 
 		event TimeDel AircraftWillIntersectInTimeEvent;
 		event AircraftDel AircraftDidEnterRadarRangeEvent;

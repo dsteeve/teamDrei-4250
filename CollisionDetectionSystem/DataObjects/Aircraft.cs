@@ -11,7 +11,7 @@ namespace CollisionDetectionSystem
 		public List<Vector<double>> DataBuffer { get; private set; } //Holds the last 20 coordinates
 		public Vector<double> Velocity;
 
-		public Aircraft (string identifier, Vector<double> velocity)
+		public Aircraft (string identifier, Vector<double> velocity = null)
 		{
 			Identifier = identifier;
 			Velocity = velocity;

@@ -65,9 +65,14 @@ namespace CollisionDetectionSystem
 			double S = C * FF;
 
 			//Result in Kilometers
-			double x = Math.Round(((radius * C) + altitude) * cosLat * Math.Cos (longitude * Math.PI / 180) / 1000, 3);
-			double y = Math.Round(((radius * C) + altitude) * cosLat * Math.Sin (longitude * Math.PI / 180) / 1000, 3);
-			double z = Math.Round(((radius * S) + altitude) * sinLat / 1000, 3);
+//			double x = Math.Round(((radius * C) + altitude) * cosLat * Math.Cos (longitude * Math.PI / 180) / 1000, 3);
+//			double y = Math.Round(((radius * C) + altitude) * cosLat * Math.Sin (longitude * Math.PI / 180) / 1000, 3);
+//			double z = Math.Round(((radius * S) + altitude) * sinLat / 1000, 3);
+
+			//Result in Nautical miles
+			double x = Math.Round(((radius * C) + altitude) * cosLat * Math.Cos (longitude * Math.PI / 180) * 0.000539957, 3);
+			double y = Math.Round(((radius * C) + altitude) * cosLat * Math.Sin (longitude * Math.PI / 180) * 0.000539957, 3);
+			double z = Math.Round(((radius * S) + altitude) * sinLat * 0.000539957, 3);
 
 			return Vector<double>.Build.DenseOfArray (new double[3]{ x, y, z });
 		}
@@ -78,7 +83,7 @@ namespace CollisionDetectionSystem
 			double ySquared = Math.Pow (coordinate1 [1] - coordinate2 [1], 2);
 			double zSquared = Math.Pow (coordinate1 [2] - coordinate2 [2], 2);
 
-			return Math.Round(Math.Sqrt (xSquared + ySquared + zSquared), 3); //Result in Kilometers
+			return Math.Round(Math.Sqrt (xSquared + ySquared + zSquared), 3); //Result in Nautical miles
 
 		}
 
