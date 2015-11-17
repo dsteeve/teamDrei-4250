@@ -17,6 +17,10 @@ namespace UnitTesting
 
 			IDataProcessor dataProcessor = new DataProcessor ();
 
+			dataProcessor.ThisAircraft.DataBuffer.Add(Vector<double>.Build.Dense(3));
+			dataProcessor.OnPostDataEvent(new TransponderData ("00:00", "B1E24F", 0, 0, 0, "1200"));
+			dataProcessor.OnPostDataEvent(new TransponderData ("00:00", "B1E24F", 1, 0, 0, "1200"));
+
 			TransponderData data1 = new TransponderData ("00:00", "1A23", 1, 0, 0, "1200");
 			TransponderData data2 = new TransponderData ("00:00", "1B35", 2, 0, 0, "1200");
 			TransponderData data3 = new TransponderData ("00:00", "9C23", 3, 0, 0, "1200");
