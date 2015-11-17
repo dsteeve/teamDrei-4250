@@ -23,7 +23,9 @@ namespace UnitTesting
 				"SystemTesting\\TestData\\SystemTests\\TestFiles\\1";
 			String argument = "testdir=" + path;
 
-			cds.Start (argument);
+			cds.Start (StringUtility.getArgValue(argument));
+
+			Assert.True(true);
 		}
 	}
 }
