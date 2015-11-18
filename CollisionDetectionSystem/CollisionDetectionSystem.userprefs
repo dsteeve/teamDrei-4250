@@ -4,25 +4,8 @@
     <Files>
       <File FileName="Main.cs" Line="39" Column="1" />
       <File FileName="UnitTesting\RadarHandlerTest.cs" Line="1" Column="1" />
-      <File FileName="CollisionDetectionSystem.cs" Line="36" Column="18" />
+      <File FileName="CollisionDetectionSystem.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="CollisionDetectionSystem" expanded="True">
-            <Node name="CollisionDetectionSystem" expanded="True">
-              <Node name="Main.cs" selected="True" />
-            </Node>
-            <Node name="UnitTesting" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State name="__root__">
-          <Node name="CollisionDetectionSystem" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

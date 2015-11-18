@@ -32,11 +32,30 @@ namespace CollisionDetectionSystem
 
 
 			String line = "something"; //reading a line of each file at a time... 
-			while (!line.Equals(null))
+			while (files.Any())
 			{
 				for (int i = 0; i < files.Count; i++) {
 					line = (files [i]).ReadLine ();
-					Console.WriteLine (line);
+					if ((line = (files[i]).ReadLine ()) == null) {
+						files.Remove (files [i]);
+					} else 
+					{
+						Console.WriteLine (line);
+
+						string[] splitData = line.Split (',');
+						//ignore lines that do not have 6 elements (i.e. bad data)
+						//would be a good idea to check the individual elements with more care, i.e. try to parse a double and ignore the line or check the ammount of characters in the timestamp...
+						if (splitData.Length != 6) {
+							continue;
+						}
+						else
+						{
+							//set the transponder data then add to the list
+							TransponderData tData = new TransponderData (splitData [0], splitData [1], double.Parse(splitData [2]), double.Parse(splitData [3]), double.Parse(splitData [4]), splitData [5]);
+							BroadcastDataEvent (tData);
+							System.Threading.Thread.Sleep(500);
+						}
+					}	
 				}
 			}
 		}
@@ -45,6 +64,7 @@ namespace CollisionDetectionSystem
 		//transponder receiver is listening to
 		void BroadcastDataEvent(TransponderData data) 
 		{
+			Console.WriteLine(data.Altitude +" "+data.Latitude+" "+data.Longitude+" "+data.Icao);
 			SendDataEvent (data);
 		}
 
