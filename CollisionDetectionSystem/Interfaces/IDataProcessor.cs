@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CollisionDetectionSystem
 {
 	//are these public once implemented?
-	public delegate void TimeDel(double time);
+	public delegate void TimeDel(double time, Position position);
 	public delegate void AircraftDel(Aircraft aircraft);
 
 	public interface IDataProcessor

@@ -64,7 +64,12 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (intruderCoordinate, ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
-				if (distance < 6.0) {
+//				if (distance < 6.0) {
+//					return true;
+//				}
+
+				//if distance is less than 6 NM return true (in km)
+				if (distance < 11.112) {
 					return true;
 				}
 			}
@@ -77,7 +82,12 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (aircraft.DataBuffer[0], ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
-				if (distance < 6.0) {
+				//				if (distance < 6.0) {
+				//					return true;
+				//				}
+
+				//if distance is less than 6 NM return true (in km)
+				if (distance < 11.112) {
 					return true;
 				}
 			}
@@ -92,8 +102,13 @@ namespace CollisionDetectionSystem
 					if (intruder.DataBuffer.Count > 0) {
 						var distance = MathUtility.Distance (intruder.DataBuffer [0], ThisAircraft.DataBuffer [0]);
 
-						//Remove if greater than 6 Nautical Miles
-						if (distance > 6.0) {
+//						//Remove if greater than 6 Nautical Miles
+//						if (distance > 6.0) {
+//							Intruders.Remove (intruder);
+//						}
+
+						//Remove if greater than 6 Nautical Miles (in km)
+						if (distance > 11.112) {
 							Intruders.Remove (intruder);
 						}
 					}
@@ -108,7 +123,7 @@ namespace CollisionDetectionSystem
 			var coordinate = MathUtility.CalculateCoordinate (data.Latitude, data.Longitude, data.Altitude);
 			aircraft.DataBuffer.Insert (0, coordinate);
 
-			if (aircraft.DataBuffer.Count > 0) {
+			if (aircraft.DataBuffer.Count > 1) {
 				aircraft.Velocity = MathUtility.CalculateVector (aircraft.DataBuffer [1], aircraft.DataBuffer [0]);
 			}
 
@@ -130,7 +145,12 @@ namespace CollisionDetectionSystem
 			//Calculate time...
 			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 1);
 			if (timeUntilIntersection > 0) {
-				AircraftWillIntersectInTimeEvent(timeUntilIntersection);
+				
+				if (intruder.DataBuffer [0] [2] > ThisAircraft.DataBuffer [0] [2]) {
+					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);
+				} else {
+					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Below);
+				}
 			}
 
 			//If in radar range...

@@ -8,11 +8,10 @@ namespace CollisionDetectionSystem
 
 		//get time until intersection
 		//call threat level
-		public void OnAircraftWillIntersectInTimeEvent (double time)
+		public void OnAircraftWillIntersectInTimeEvent (double time, Position position)
 		{
 			Threat theLevel = DetermineThreatLevel (time);
-			PlayAudio (theLevel);
-
+			PlayAudio (theLevel, position);
 		}
 
 		//determines threat level and sends into playAudio if needed
@@ -40,9 +39,18 @@ namespace CollisionDetectionSystem
 
 		//send in an enum for threat level
 		//return true if audio played else false
-		public Boolean PlayAudio (Threat threat)
+		public Boolean PlayAudio (Threat threat, Position position)
 		{
-			return false;
+			if (threat != Threat.none) {
+				if (position == Position.Above) {
+					Console.WriteLine ("Descend");
+				} else {
+					Console.WriteLine ("Ascend");
+				}
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		#endregion
