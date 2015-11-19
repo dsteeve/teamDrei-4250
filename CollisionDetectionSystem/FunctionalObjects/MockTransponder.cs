@@ -17,10 +17,7 @@ namespace CollisionDetectionSystem
 		// and announce location every 500ms
 		public void Start (String testDirName)  
 		{
-			System.Console.WriteLine ("test dir name is : " + testDirName);
 			var files = new List<StreamReader>();
-
-			//throw new NotImplementedException ();  //methods to read in and translate data to build TranponderDatay types
 
 			string[] txtFiles = Directory.GetFiles(testDirName, "*.txt").Select(path => Path.GetFileName(path)).ToArray(); //array of text files                           
 
@@ -32,28 +29,31 @@ namespace CollisionDetectionSystem
 
 
 			String line = "something"; //reading a line of each file at a time... 
+			int count = 1;
 			while (files.Any())
 			{
-				for (int i = 0; i < files.Count; i++) {
-					line = (files [i]).ReadLine ();
-					if ((line = (files[i]).ReadLine ()) == null) {
+				for (int i = 0; i < files.Count; i++) 
+				{
+					if ((line = (files [i]).ReadLine ()) == null) {
 						files.Remove (files [i]);
-					} else 
+					}
+					else if (line.StartsWith ("#") || line.Equals(""))
 					{
-						Console.WriteLine (line);
+						i--;
+					}
+					else 
+					{
+						count++;
+						Console.WriteLine (line + "    " +count/2);
 
 						string[] splitData = line.Split (',');
-						//ignore lines that do not have 6 elements (i.e. bad data)
-						//would be a good idea to check the individual elements with more care, i.e. try to parse a double and ignore the line or check the ammount of characters in the timestamp...
-						if (splitData.Length != 6) {
-							continue;
-						}
-						else
+
+						if (!(splitData.Length != 6))
 						{
-							//set the transponder data then add to the list
+							
 							TransponderData tData = new TransponderData (splitData [0], splitData [1], double.Parse(splitData [2]), double.Parse(splitData [3]), double.Parse(splitData [4]), splitData [5]);
 							BroadcastDataEvent (tData);
-							System.Threading.Thread.Sleep(500);
+							//System.Threading.Thread.Sleep(500);
 						}
 					}	
 				}
@@ -64,7 +64,6 @@ namespace CollisionDetectionSystem
 		//transponder receiver is listening to
 		void BroadcastDataEvent(TransponderData data) 
 		{
-			Console.WriteLine(data.Altitude +" "+data.Latitude+" "+data.Longitude+" "+data.Icao);
 			SendDataEvent (data);
 		}
 

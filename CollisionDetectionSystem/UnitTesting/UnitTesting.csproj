@@ -51,6 +51,7 @@
     <Compile Include="TransponderReceiverTest.cs" />
     <Compile Include="MockTransponderTest.cs" />
     <Compile Include="CollisionDetectionSystemTest.cs" />
+    <Compile Include="Distances.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
