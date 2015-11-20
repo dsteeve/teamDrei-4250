@@ -17,10 +17,8 @@ namespace CollisionDetectionSystem
 		// and announce location every 500ms
 		public void Start (String testDirName)  
 		{
-			System.Console.WriteLine ("test dir name is : " + testDirName);
+			Console.WriteLine ("testdir="+testDirName);
 			var files = new List<StreamReader>();
-
-			//throw new NotImplementedException ();  //methods to read in and translate data to build TranponderDatay types
 
 			string[] txtFiles = Directory.GetFiles(testDirName, "*.txt").Select(path => Path.GetFileName(path)).ToArray(); //array of text files                           
 
@@ -32,11 +30,33 @@ namespace CollisionDetectionSystem
 
 
 			String line = "something"; //reading a line of each file at a time... 
-			while (!line.Equals(null))
+			int count = 1;
+			while (files.Any())
 			{
-				for (int i = 0; i < files.Count; i++) {
-					line = (files [i]).ReadLine ();
-					Console.WriteLine (line);
+				for (int i = 0; i < files.Count; i++) 
+				{
+					if ((line = (files [i]).ReadLine ()) == null) {
+						files.Remove (files [i]);
+					}
+					else if (line.StartsWith ("#") || line.Equals(""))
+					{
+						i--;
+					}
+					else 
+					{
+						count++;
+						Console.WriteLine (line + "    " +count/2);
+
+						string[] splitData = line.Split (',');
+
+						if (!(splitData.Length != 6))
+						{
+							
+							TransponderData tData = new TransponderData (splitData [0], splitData [1], double.Parse(splitData [2]), double.Parse(splitData [3]), double.Parse(splitData [4]), splitData [5]);
+							BroadcastDataEvent (tData);
+							//System.Threading.Thread.Sleep(500);
+						}
+					}	
 				}
 			}
 		}
