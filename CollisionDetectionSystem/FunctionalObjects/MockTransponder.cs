@@ -17,6 +17,7 @@ namespace CollisionDetectionSystem
 		// and announce location every 500ms
 		public void Start (String testDirName)  
 		{
+			Console.WriteLine ("testdir="+testDirName);
 			var files = new List<StreamReader>();
 
 			string[] txtFiles = Directory.GetFiles(testDirName, "*.txt").Select(path => Path.GetFileName(path)).ToArray(); //array of text files                           

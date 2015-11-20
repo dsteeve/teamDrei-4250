@@ -15,7 +15,8 @@ namespace CollisionDetectionSystem
 		public Boolean AircraftDidEnterRadarRangeEventTest (Aircraft intruder)
 		{
 			//case for updateRadarScreen call
-			throw new NotImplementedException ();
+			//throw new NotImplementedException ();
+			return true;
 		}
 
 		private Boolean UpdateRadarScreen ()

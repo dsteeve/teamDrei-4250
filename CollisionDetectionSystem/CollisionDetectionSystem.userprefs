@@ -1,11 +1,29 @@
 ﻿<Properties StartupItem="CollisionDetectionSystem.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTesting\Distances.cs">
     <Files>
-      <File FileName="Main.cs" Line="39" Column="1" />
-      <File FileName="UnitTesting\RadarHandlerTest.cs" Line="1" Column="1" />
-      <File FileName="CollisionDetectionSystem.cs" Line="1" Column="1" />
+      <File FileName="UnitTesting\CollisionDetectionSystemTest.cs" Line="30" Column="1" />
+      <File FileName="CollisionDetectionSystem.cs" Line="36" Column="3" />
+      <File FileName="FunctionalObjects\MockTransponder.cs" Line="50" Column="7" />
+      <File FileName="UnitTesting\RadarHandlerTest.cs" Line="118" Column="1" />
+      <File FileName="UnitTesting\Distances.cs" Line="22" Column="21" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="CollisionDetectionSystem" expanded="True">
+            <Node name="UnitTesting" expanded="True">
+              <Node name="UnitTesting" expanded="True">
+                <Node name="CollisionDetectionSystemTest" expanded="True">
+                  <Node name="startTest" selected="True" />
+                </Node>
+                <Node name="Distances" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
