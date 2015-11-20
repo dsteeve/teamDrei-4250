@@ -54,7 +54,7 @@ namespace CollisionDetectionSystem
 							
 							TransponderData tData = new TransponderData (splitData [0], splitData [1], double.Parse(splitData [2]), double.Parse(splitData [3]), double.Parse(splitData [4]), splitData [5]);
 							BroadcastDataEvent (tData);
-							//System.Threading.Thread.Sleep(500);
+							System.Threading.Thread.Sleep(500);
 						}
 					}	
 				}
