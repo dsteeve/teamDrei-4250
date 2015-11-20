@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CollisionDetectionSystem
 {
-	public delegate void DataDel(TransponderData data);
+	public delegate void DataDel( List<TransponderData> data);
 
 	public interface ITransponderReceiver
 	{
-		void ReceiveData(TransponderData data);
-		void PrepareDataForPost(TransponderData data);
+		void ReceiveData(List<TransponderData> data);
+		void PrepareDataForPost( List<TransponderData> data);
 		event DataDel PostDataEvent;
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using CollisionDetectionSystem;
+using System.Collections.Generic;
 
 namespace UnitTesting
 {
@@ -14,7 +15,7 @@ namespace UnitTesting
 		private TransponderReceiver unit = new TransponderReceiver ();
 
 
-		public void GotPostDataEvent(TransponderData td) {
+		public void GotPostDataEvent(  List<TransponderData> td) {
 			this.postDataEventFired = true;
 		}
 
@@ -31,8 +32,10 @@ namespace UnitTesting
 		{
 			Assert.IsFalse (postDataEventFired);
 			TransponderData td = new TransponderData ("14:00:00Z.253 T", "12345F", 100.5, -15.9, 6000, "GW400");
+			var list1 = new List<TransponderData> ();
+			list1.Add (td);
 	
-			unit.ReceiveData (td);
+			unit.ReceiveData (list1);
 			//Test that we fired the postDataEvent
 			Assert.IsTrue (postDataEventFired);
 
@@ -43,8 +46,11 @@ namespace UnitTesting
 		{
 			Assert.IsFalse (postDataEventFired);
 			TransponderData td = new TransponderData ("xxxx", "12345F", 100.5, -15.9, 6000, "GW400");
+			var list1 = new List<TransponderData> ();
 			TransponderReceiver unit = new TransponderReceiver ();
-			unit.ReceiveData (td);
+			list1.Add (td);
+
+			unit.ReceiveData (list1);
 			//Test that we didn't fire the postDataEvent if we got bad data, it should log and ignore.
 			Assert.IsFalse (postDataEventFired);
 

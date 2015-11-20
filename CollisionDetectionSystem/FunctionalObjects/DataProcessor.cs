@@ -25,24 +25,27 @@ namespace CollisionDetectionSystem
 
 		//calls update aircraft
 		//to be decided 
-		public void OnPostDataEvent (TransponderData data) 
+		public void OnPostDataEvent ( List<TransponderData> data) 
 		{
 			//update ourselves or another aircraft
 
-			if (data.Icao == ThisAircraft.Identifier) {
-				UpdateAircraftFromData(data, ThisAircraft);
+			// this will likely NEED a for loop to go through the data events in the data list, i made it to 0 so it'll work for now but this is what needs to
+			// be changed more than likely.
+
+			if (data[0].Icao == ThisAircraft.Identifier) {
+				UpdateAircraftFromData(data[0], ThisAircraft);
 			} else {
 				bool found = false;
 
 				foreach (var intruder in Intruders) {
-					if (intruder.Identifier == data.Icao) {
-						UpdateAircraftFromData (data, intruder);
+					if (intruder.Identifier == data[0].Icao) {
+						UpdateAircraftFromData (data[0], intruder);
 						found = true;
 					}
 				}
 
 				if (!found) {
-					AddNewIntruder (data);
+					AddNewIntruder (data[0]);
 				}
 			}
 

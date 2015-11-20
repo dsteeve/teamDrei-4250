@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CollisionDetectionSystem
 {
@@ -8,14 +9,14 @@ namespace CollisionDetectionSystem
 
 		public event DataDel PostDataEvent;
 
-		public void ReceiveData (TransponderData data)
+		public void ReceiveData ( List<TransponderData> data)
 		{
 			//check valid data and drop it if invalid 
 
 			PrepareDataForPost (data);
 		}
 
-		public void PrepareDataForPost (TransponderData data)
+		public void PrepareDataForPost ( List<TransponderData> data)
 		{
 			//Do some stuff
 
