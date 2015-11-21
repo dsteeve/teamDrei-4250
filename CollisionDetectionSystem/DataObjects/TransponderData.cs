@@ -10,6 +10,7 @@ namespace CollisionDetectionSystem
 	public class TransponderData
 	{
 		public DateTime PingTimestamp {  get; private set; }
+		public String Timestamp {  get; private set; }
 		public string Icao {  get; private set; }
 		public double Latitude {  get; private set; }
 		public double Longitude {  get; private set; }
@@ -23,6 +24,7 @@ namespace CollisionDetectionSystem
 		{
 			Regex pattern = new Regex ("[ZT ]");
 			setPingTimestamp(pattern.Replace(pingTimestamp,""));
+			Timestamp = pingTimestamp;
 			Icao = icao;
 			Latitude = latitude;
 			Longitude = longitude;

@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using MathNet.Numerics.LinearAlgebra;
 using CollisionDetectionSystem;
+using System.Collections.Generic;
 
 namespace UnitTesting
 {
@@ -59,10 +60,21 @@ namespace UnitTesting
 			TransponderData intruderData2 = new TransponderData ("00:00", "1A23", 89.99542, 0, 43643247.8, "1200");
 
 			dataProcessor.ThisAircraft.DataBuffer.Add(Vector<double>.Build.DenseOfArray(new double[3]{0, 0, 50000}));
-			dataProcessor.OnPostDataEvent(new TransponderData ("00:00", "B1E24F", 90, 0, 43643247.7, "1200"));
-			dataProcessor.OnPostDataEvent (intruderData1);
-			dataProcessor.OnPostDataEvent(new TransponderData ("00:00", "B1E24F", 89.9986, 0, 43643247.7, "1200"));
-			dataProcessor.OnPostDataEvent (intruderData2);
+
+			var list1 = new  List<TransponderData> ();
+			var list2 = new  List<TransponderData> ();
+			var list3 = new  List<TransponderData> ();
+			var list4 = new  List<TransponderData> ();
+
+			list1.Add (new TransponderData ("00:00", "B1E24F", 90, 0, 43643247.7, "1200"));
+			list2.Add (intruderData1);
+			list3.Add (new TransponderData ("00:00", "B1E24F", 89.9986, 0, 43643247.7, "1200"));
+			list4.Add (intruderData2);
+
+			dataProcessor.OnPostDataEvent(list1);
+			dataProcessor.OnPostDataEvent (list2);
+			dataProcessor.OnPostDataEvent(list3);
+			dataProcessor.OnPostDataEvent (list4);
 		}
 
 	}
