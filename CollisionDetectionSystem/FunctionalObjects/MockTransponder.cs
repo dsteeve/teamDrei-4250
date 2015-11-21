@@ -58,6 +58,7 @@ namespace CollisionDetectionSystem
 			dataList.RemoveAt(0);
 
 			BroadcastDataEvent (listToSend);
+			System.Threading.Thread.Sleep (200);
 
 			return dataList;
 		}
@@ -135,6 +136,8 @@ namespace CollisionDetectionSystem
 		 */
 		void BroadcastDataEvent(List<TransponderData> data) 
 		{
+			Console.WriteLine ("mocking data list size is :" + data.Count);
+
 			for (int i = 0; i< data.Count; i++ ) {
 				Console.WriteLine ("sending mocked data: " + data [i]);
 				SendDataEvent (data[i]);

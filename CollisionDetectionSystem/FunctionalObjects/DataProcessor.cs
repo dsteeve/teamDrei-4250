@@ -24,13 +24,9 @@ namespace CollisionDetectionSystem
 		public event AircraftDel AircraftDidEnterRadarRangeEvent;
 
 		//calls update aircraft
-		//to be decided 
 		public void OnPostDataEvent ( TransponderData tdata) 
 		{
 			//update ourselves or another aircraft
-
-			// this will likely NEED a for loop to go through the data events in the data list, i made it to 0 so it'll work for now but this is what needs to
-			// be changed more than likely.
 
 			if (tdata.Icao == ThisAircraft.Identifier) {
 				UpdateAircraftFromData(tdata, ThisAircraft);
@@ -49,7 +45,7 @@ namespace CollisionDetectionSystem
 				}
 			}
 
-			RemoveOutOfRangeIntruders ();
+			//RemoveOutOfRangeIntruders ();
 		}
 
 		private void AddNewIntruder(TransponderData data)
@@ -126,7 +122,7 @@ namespace CollisionDetectionSystem
 			var coordinate = MathUtility.CalculateCoordinate (data.Latitude, data.Longitude, data.Altitude);
 			aircraft.DataBuffer.Insert (0, coordinate);
 
-			if (aircraft.DataBuffer.Count > 1) {
+			if (aircraft.DataBuffer.Count > 2) {
 				aircraft.Velocity = MathUtility.CalculateVector (aircraft.DataBuffer [1], aircraft.DataBuffer [0]);
 			}
 
@@ -136,6 +132,8 @@ namespace CollisionDetectionSystem
 			}
 
 			if (aircraft != ThisAircraft && aircraft.Velocity != null) {
+				Console.WriteLine("our aircraft: " + ThisAircraft );
+				Console.WriteLine("intruder aircraft" + aircraft);
 				DetermineProximityOfIntruder (aircraft);
 			}
 		}
@@ -147,6 +145,9 @@ namespace CollisionDetectionSystem
 			//If in proximity...
 			//Calculate time...
 			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 1);
+
+			Console.WriteLine ("time until intersection: " + timeUntilIntersection);
+
 			if (timeUntilIntersection > 0) {
 				
 				if (intruder.DataBuffer [0] [2] > ThisAircraft.DataBuffer [0] [2]) {

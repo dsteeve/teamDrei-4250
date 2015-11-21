@@ -15,9 +15,15 @@ namespace CollisionDetectionSystem
 			Vector<double> c1 = Vector<double>.Build.DenseOfArray(new double[3]{aircraft1.DataBuffer[0][0], aircraft1.DataBuffer[0][1], aircraft1.DataBuffer[0][2]});
 			Vector<double> c2 = Vector<double>.Build.DenseOfArray(new double[3]{aircraft2.DataBuffer[0][0], aircraft2.DataBuffer[0][1], aircraft2.DataBuffer[0][2]});
 
+			Console.WriteLine ("aircraft1-us vector" + c1);
+			Console.WriteLine ("aircraft2-them  vector" + c2);
+
 			//Velocities
 			Vector<double> v1 = aircraft1.Velocity;
 			Vector<double> v2 = aircraft2.Velocity;
+
+			Console.WriteLine ("aircraft1-us velocity" + v1);
+			Console.WriteLine ("aircraft2-them velocity" + v2);
 
 			Vector<double> d = c1.Subtract (c2);
 			Vector<double> w = v1.Subtract (v2);
@@ -26,6 +32,7 @@ namespace CollisionDetectionSystem
 			double wDotW = (w.DotProduct (w));
 			double dDotD = (d.DotProduct (d));
 
+			//Console.WriteLine(
 			double decider = Math.Pow(dDotW, 2) - (wDotW * (dDotD - Math.Pow(radius, 2)));
 			if (decider < 0) {
 				//No intersection if negative
