@@ -30,7 +30,7 @@ namespace CollisionDetectionSystem
 					sb.Append(d);
 					sb.Append(", ");
 				}
-				sb.AppendLine ();
+				sb.AppendLine ();  
 			}
 			return sb.ToString ();
 		}

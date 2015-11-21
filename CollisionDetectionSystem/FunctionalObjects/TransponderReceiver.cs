@@ -36,7 +36,6 @@ namespace CollisionDetectionSystem
 			//should be in a while loop
 			if (tdataStack.Count > 0) {
 				PrepareDataForPost (tdataStack.Pop ());
-				//Console.WriteLine ("popped the data off stack");
 			}
 		}
 

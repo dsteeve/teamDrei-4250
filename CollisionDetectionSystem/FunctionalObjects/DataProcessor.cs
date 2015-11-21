@@ -63,12 +63,7 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (intruderCoordinate, ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
-//				if (distance < 6.0) {
-//					return true;
-//				}
-
-				//if distance is less than 6 NM return true (in km)
-				if (distance < 11.112) {
+				if (distance < 6.0) {
 					return true;
 				}
 			}
@@ -81,12 +76,7 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (aircraft.DataBuffer[0], ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
-				//				if (distance < 6.0) {
-				//					return true;
-				//				}
-
-				//if distance is less than 6 NM return true (in km)
-				if (distance < 11.112) {
+				if (distance < 6.1) {
 					return true;
 				}
 			}
@@ -101,15 +91,15 @@ namespace CollisionDetectionSystem
 					if (intruder.DataBuffer.Count > 0) {
 						var distance = MathUtility.Distance (intruder.DataBuffer [0], ThisAircraft.DataBuffer [0]);
 
-//						//Remove if greater than 6 Nautical Miles
-//						if (distance > 6.0) {
-//							Intruders.Remove (intruder);
-//						}
-
-						//Remove if greater than 6 Nautical Miles (in km)
-						if (distance > 11.112) {
+						//Remove if greater than 6 Nautical Miles
+						if (distance > 6.1) {
 							Intruders.Remove (intruder);
 						}
+
+						//Remove if greater than 6 Nautical Miles (in km)
+						//if (distance > 11.112) {
+						//	Intruders.Remove (intruder);
+						//}
 					}
 				}
 			}
@@ -144,7 +134,7 @@ namespace CollisionDetectionSystem
 
 			//If in proximity...
 			//Calculate time...
-			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 1);
+			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 5);
 
 			Console.WriteLine ("time until intersection: " + timeUntilIntersection);
 
@@ -161,6 +151,7 @@ namespace CollisionDetectionSystem
 			if(WithinRadarRange(intruder)){
 				AircraftDidEnterRadarRangeEvent(intruder);
 			}
+				
 				
 		}
 

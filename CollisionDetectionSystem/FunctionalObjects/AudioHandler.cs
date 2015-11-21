@@ -29,7 +29,7 @@ namespace CollisionDetectionSystem
 			else if (time <= 30 && time > 15) {
 					return Threat.orange;
 				} 
-			else if (time <= 15 && time > 0) {
+			else if (time <= 15 && time >= 0) {
 					return Threat.red;
 				}
 			else{
