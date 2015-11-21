@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace CollisionDetectionSystem
 {
-	public delegate void DataDel( List<TransponderData> data);
+	public delegate void DataDel( TransponderData tdata);
 
 	public interface ITransponderReceiver
 	{
-		void ReceiveData(List<TransponderData> data);
-		void PrepareDataForPost( List<TransponderData> data);
+		void ReceiveData(TransponderData tdata);
+		void PrepareDataForPost( TransponderData tdata);
 		event DataDel PostDataEvent;
 	}
 }

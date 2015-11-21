@@ -4,13 +4,19 @@ using System.Linq;
 using NUnit.Framework;
 using System.Collections.Generic;
 
+/**
+ * Mimics the behavior of various transponders on various aircrafts 
+ * responding to a ping
+ * 
+ */
+
 namespace CollisionDetectionSystem
 {
 	public class MockTransponder: IMockTransponder
 	{
 		#region IMockTransponder implementation
 
-		public event DataDel SendDataEvent;
+	public event DataDel SendDataEvent;
 
 		// will get a directory name to read the files in
 		// the files will have a list of fake data to go through 
@@ -24,6 +30,12 @@ namespace CollisionDetectionSystem
 				dataList = sendData (dataList);
 			}
 		}
+
+		/**
+		 * correlates the data based on timestamps
+		 * handling just 2 lists right now.
+		 * TODO: eventually we would want to handle all the lists in the directory
+		 */
 
 		public List<TransponderData> sendData (List<TransponderData>  dataList )  
 		{
@@ -46,9 +58,15 @@ namespace CollisionDetectionSystem
 			dataList.RemoveAt(0);
 
 			BroadcastDataEvent (listToSend);
+			System.Threading.Thread.Sleep (200);
 
 			return dataList;
 		}
+
+		/**
+		 * Given the name of the directory
+		 * Build a list of TransponderData from the test files in that directory
+		 */
 
 		public List<TransponderData> buildTransporterDataList (String testDirName)  
 		{
@@ -64,6 +82,7 @@ namespace CollisionDetectionSystem
 					if ((line = (files [i]).ReadLine ()) == null) {
 						files.Remove (files [i]);
 					} else if (line.StartsWith ("#") || line.Equals ("")) {
+						printComment (line);
 						i--;
 					} else {
 						count++;
@@ -72,7 +91,9 @@ namespace CollisionDetectionSystem
 						string[] splitData = line.Split (',');
 
 						if (splitData.Length == 6) {
-							TransponderData tData = new TransponderData (splitData [0], splitData [1], double.Parse (splitData [2]), double.Parse (splitData [3]), double.Parse (splitData [4]), splitData [5]);
+							TransponderData tData = new TransponderData (splitData [0], splitData [1], 
+								double.Parse (splitData [2]), double.Parse (splitData [3]), 
+								double.Parse (splitData [4]), splitData [5]);
 							dataList.Add (tData);
 						}
 					}
@@ -80,25 +101,47 @@ namespace CollisionDetectionSystem
 			}
 			return dataList;
 		}
+
+		public void printComment (String commentLine) {
+			if (commentLine.StartsWith("#") ){
+				Console.WriteLine(commentLine);
+			}
+		}
+
+		/**
+		 *
+		 */
 		public List<StreamReader> streamReaders (String testDirName)
 		{
 			//Console.WriteLine ("testdir=" + testDirName);
 			var files = new List<StreamReader> ();
 
-			string[] txtFiles = Directory.GetFiles (testDirName, "*.txt").Select (path => Path.GetFileName (path)).ToArray (); //array of text files                           
+			string[] txtFiles = Directory.GetFiles (testDirName, "*.txt").Select (path => Path.GetFileName (path)).ToArray (); //array of text files   
+
+
 
 			for (int i = 0; i < txtFiles.Length; i++) { //fills list with all streamreaders
-				StreamReader file = new StreamReader (testDirName + "\\" + txtFiles.GetValue (i));
+				StreamReader file = new StreamReader (testDirName + Path.DirectorySeparatorChar + txtFiles.GetValue (i));
 				files.Add (file);
 			}
 			return files;
 		}
 
-		//Sends event with transponder data this is the one the
-		//transponder receiver is listening to
+		/** 
+		 * Sends event with transponder data this is the one the
+		 *  transponderReceiver.receiveData() is wired up to listen to.
+		 * 
+		 * Here we are simulating transponder data responses from various aircraft (including our own aircraft)
+		 * sending us data nearly the same time.
+		 */
 		void BroadcastDataEvent(List<TransponderData> data) 
 		{
-			SendDataEvent (data);
+			Console.WriteLine ("mocking data list size is :" + data.Count);
+
+			for (int i = 0; i< data.Count; i++ ) {
+				Console.WriteLine ("sending mocked data: " + data [i]);
+				SendDataEvent (data[i]);
+			}
 		}
 
 		#endregion

@@ -17,6 +17,23 @@ namespace CollisionDetectionSystem
 			Velocity = velocity;
 			DataBuffer = new List<Vector<double>>();
 		}
+
+		public override string ToString ()
+		{
+			return "Aircraft Data--> Identifier:" + Identifier + "  Velocity:" + Velocity + "  DataBuffer:" + toString(DataBuffer); 
+		}
+
+		private String toString(List<Vector<double>> buf){
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			foreach (Vector<double> vect in buf) {
+				foreach (Double d in vect) {
+					sb.Append(d);
+					sb.Append(", ");
+				}
+				sb.AppendLine ();  
+			}
+			return sb.ToString ();
+		}
 	}
 }
 

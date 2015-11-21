@@ -15,9 +15,15 @@ namespace CollisionDetectionSystem
 			Vector<double> c1 = Vector<double>.Build.DenseOfArray(new double[3]{aircraft1.DataBuffer[0][0], aircraft1.DataBuffer[0][1], aircraft1.DataBuffer[0][2]});
 			Vector<double> c2 = Vector<double>.Build.DenseOfArray(new double[3]{aircraft2.DataBuffer[0][0], aircraft2.DataBuffer[0][1], aircraft2.DataBuffer[0][2]});
 
+			//Console.WriteLine ("aircraft1-us vector" + c1);
+			//Console.WriteLine ("aircraft2-them  vector" + c2);
+
 			//Velocities
 			Vector<double> v1 = aircraft1.Velocity;
 			Vector<double> v2 = aircraft2.Velocity;
+
+			//Console.WriteLine ("aircraft1-us velocity" + v1);
+			//Console.WriteLine ("aircraft2-them velocity" + v2);
 
 			Vector<double> d = c1.Subtract (c2);
 			Vector<double> w = v1.Subtract (v2);
@@ -26,6 +32,7 @@ namespace CollisionDetectionSystem
 			double wDotW = (w.DotProduct (w));
 			double dDotD = (d.DotProduct (d));
 
+			//Console.WriteLine(
 			double decider = Math.Pow(dDotW, 2) - (wDotW * (dDotD - Math.Pow(radius, 2)));
 			if (decider < 0) {
 				//No intersection if negative
@@ -77,13 +84,18 @@ namespace CollisionDetectionSystem
 			return Vector<double>.Build.DenseOfArray (new double[3]{ x, y, z });
 		}
 
+		/**
+		 * Calculate Distance between 2 vectors
+		 * Returns distance in NM's
+		 */
 		public double Distance(Vector<double> coordinate1, Vector<double> coordinate2){
 
 			double xSquared = Math.Pow (coordinate1 [0] - coordinate2 [0], 2);
 			double ySquared = Math.Pow (coordinate1 [1] - coordinate2 [1], 2);
 			double zSquared = Math.Pow (coordinate1 [2] - coordinate2 [2], 2);
 
-			return Math.Round(Math.Sqrt (xSquared + ySquared + zSquared), 3); //Result in Nautical miles
+			double kms = Math.Round(Math.Sqrt (xSquared + ySquared + zSquared), 3); //Result in Kilometers
+			return Math.Round(kms * 0.539957, 4);  //return Nautical Miles value
 
 		}
 

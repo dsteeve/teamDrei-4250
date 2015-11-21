@@ -24,32 +24,28 @@ namespace CollisionDetectionSystem
 		public event AircraftDel AircraftDidEnterRadarRangeEvent;
 
 		//calls update aircraft
-		//to be decided 
-		public void OnPostDataEvent ( List<TransponderData> data) 
+		public void OnPostDataEvent ( TransponderData tdata) 
 		{
 			//update ourselves or another aircraft
 
-			// this will likely NEED a for loop to go through the data events in the data list, i made it to 0 so it'll work for now but this is what needs to
-			// be changed more than likely.
-
-			if (data[0].Icao == ThisAircraft.Identifier) {
-				UpdateAircraftFromData(data[0], ThisAircraft);
+			if (tdata.Icao == ThisAircraft.Identifier) {
+				UpdateAircraftFromData(tdata, ThisAircraft);
 			} else {
 				bool found = false;
 
 				foreach (var intruder in Intruders) {
-					if (intruder.Identifier == data[0].Icao) {
-						UpdateAircraftFromData (data[0], intruder);
+					if (intruder.Identifier == tdata.Icao) {
+						UpdateAircraftFromData (tdata, intruder);
 						found = true;
 					}
 				}
 
 				if (!found) {
-					AddNewIntruder (data[0]);
+					AddNewIntruder (tdata);
 				}
 			}
 
-			RemoveOutOfRangeIntruders ();
+			//RemoveOutOfRangeIntruders ();
 		}
 
 		private void AddNewIntruder(TransponderData data)
@@ -67,12 +63,7 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (intruderCoordinate, ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
-//				if (distance < 6.0) {
-//					return true;
-//				}
-
-				//if distance is less than 6 NM return true (in km)
-				if (distance < 11.112) {
+				if (distance < 6.0) {
 					return true;
 				}
 			}
@@ -85,12 +76,7 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (aircraft.DataBuffer[0], ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
-				//				if (distance < 6.0) {
-				//					return true;
-				//				}
-
-				//if distance is less than 6 NM return true (in km)
-				if (distance < 11.112) {
+				if (distance < 6.1) {
 					return true;
 				}
 			}
@@ -105,15 +91,15 @@ namespace CollisionDetectionSystem
 					if (intruder.DataBuffer.Count > 0) {
 						var distance = MathUtility.Distance (intruder.DataBuffer [0], ThisAircraft.DataBuffer [0]);
 
-//						//Remove if greater than 6 Nautical Miles
-//						if (distance > 6.0) {
-//							Intruders.Remove (intruder);
-//						}
-
-						//Remove if greater than 6 Nautical Miles (in km)
-						if (distance > 11.112) {
+						//Remove if greater than 6 Nautical Miles
+						if (distance > 6.1) {
 							Intruders.Remove (intruder);
 						}
+
+						//Remove if greater than 6 Nautical Miles (in km)
+						//if (distance > 11.112) {
+						//	Intruders.Remove (intruder);
+						//}
 					}
 				}
 			}
@@ -126,7 +112,7 @@ namespace CollisionDetectionSystem
 			var coordinate = MathUtility.CalculateCoordinate (data.Latitude, data.Longitude, data.Altitude);
 			aircraft.DataBuffer.Insert (0, coordinate);
 
-			if (aircraft.DataBuffer.Count > 1) {
+			if (aircraft.DataBuffer.Count > 2) {
 				aircraft.Velocity = MathUtility.CalculateVector (aircraft.DataBuffer [1], aircraft.DataBuffer [0]);
 			}
 
@@ -136,6 +122,8 @@ namespace CollisionDetectionSystem
 			}
 
 			if (aircraft != ThisAircraft && aircraft.Velocity != null) {
+				Console.WriteLine("our aircraft: " + ThisAircraft );
+				Console.WriteLine("intruder aircraft" + aircraft);
 				DetermineProximityOfIntruder (aircraft);
 			}
 		}
@@ -146,7 +134,10 @@ namespace CollisionDetectionSystem
 
 			//If in proximity...
 			//Calculate time...
-			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 1);
+			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 5);
+
+			Console.WriteLine ("time until intersection: " + timeUntilIntersection);
+
 			if (timeUntilIntersection > 0) {
 				
 				if (intruder.DataBuffer [0] [2] > ThisAircraft.DataBuffer [0] [2]) {
@@ -160,6 +151,7 @@ namespace CollisionDetectionSystem
 			if(WithinRadarRange(intruder)){
 				AircraftDidEnterRadarRangeEvent(intruder);
 			}
+				
 				
 		}
 

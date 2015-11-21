@@ -14,14 +14,17 @@ namespace CollisionDetectionSystem
 
 		public Boolean AircraftDidEnterRadarRangeEventTest (Aircraft intruder)
 		{
-			//case for updateRadarScreen call
-			//throw new NotImplementedException ();
+			//TODO:  case for updateRadarScreen call
+
+			UpdateRadarScreen();
 			return true;
 		}
 
+		//this method probably needs some coordinates of the aircraft
 		private Boolean UpdateRadarScreen ()
 		{
-			throw new NotImplementedException ();
+			Console.WriteLine ("the radar would be updated here.");
+			return true;
 		}
 
 		#endregion
