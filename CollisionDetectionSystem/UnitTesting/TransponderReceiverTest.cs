@@ -14,8 +14,8 @@ namespace UnitTesting
 
 		private TransponderReceiver unit = new TransponderReceiver ();
 
-
-		public void GotPostDataEvent(  List<TransponderData> td) {
+		//inner wireup to test event is fired
+		public void GotPostDataEvent(  TransponderData td) {
 			this.postDataEventFired = true;
 		}
 
@@ -32,10 +32,10 @@ namespace UnitTesting
 		{
 			Assert.IsFalse (postDataEventFired);
 			TransponderData td = new TransponderData ("14:00:00Z.253 T", "12345F", 100.5, -15.9, 6000, "GW400");
-			var list1 = new List<TransponderData> ();
-			list1.Add (td);
+			//var list1 = new List<TransponderData> ();
+			//list1.Add (td);
 	
-			unit.ReceiveData (list1);
+			unit.ReceiveData (td);
 			//Test that we fired the postDataEvent
 			Assert.IsTrue (postDataEventFired);
 
@@ -46,11 +46,11 @@ namespace UnitTesting
 		{
 			Assert.IsFalse (postDataEventFired);
 			TransponderData td = new TransponderData ("xxxx", "12345F", 100.5, -15.9, 6000, "GW400");
-			var list1 = new List<TransponderData> ();
+			//var list1 = new List<TransponderData> ();
 			TransponderReceiver unit = new TransponderReceiver ();
-			list1.Add (td);
+			//list1.Add (td);
 
-			unit.ReceiveData (list1);
+			unit.ReceiveData (td);
 			//Test that we didn't fire the postDataEvent if we got bad data, it should log and ignore.
 			Assert.IsFalse (postDataEventFired);
 

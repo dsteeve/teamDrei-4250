@@ -6,7 +6,8 @@ namespace CollisionDetectionSystem
 	{
 		/**
 		 * Test mode happens if a "testdir=directoryname" is given
-		 * otherwise it is normal mode
+		 * otherwise it is normal mode 
+		 * normal mode means it is on an aircraft getting pings from transponders.
 		 */
 
 		public static int Main (string[] args)
@@ -23,7 +24,7 @@ namespace CollisionDetectionSystem
 						if (args[0].StartsWith("testdir")) {
 							system.Start(StringUtility.getArgValue(args[0]));
 						} else {
-							System.Console.WriteLine ("Usage: CollisionDetecionSystem testDir=testDirname to run in test mode");
+							System.Console.WriteLine ("Usage: CollisionDetecionSystem testdir=testDirectoryName to run in test mode");
 						} 
 					}
 				}

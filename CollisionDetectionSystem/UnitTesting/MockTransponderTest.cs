@@ -15,7 +15,7 @@ namespace UnitTesting
 		private MockTransponder unit = new MockTransponder ();
 
 
-		public void GotSendDataEvent(List<TransponderData> td) {
+		public void GotSendDataEvent(TransponderData td) {
 			this.broadedCastedData = true;
 		}
 

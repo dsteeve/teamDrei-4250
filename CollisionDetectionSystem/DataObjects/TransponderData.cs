@@ -43,5 +43,10 @@ namespace CollisionDetectionSystem
 			//TODO:  use the strTs to create the datetimeoffset.
 			return dateTimeTzobj;
 		}
+
+		public override string ToString ()
+		{
+			return "TransponderData--> Icao:" + Icao + "Latitude:" + Latitude + "Longitude:" + Longitude + "Altitude:"+Altitude; 
+		}
 	}
 }
