@@ -81,6 +81,7 @@ namespace CollisionDetectionSystem
 					if ((line = (files [i]).ReadLine ()) == null) {
 						files.Remove (files [i]);
 					} else if (line.StartsWith ("#") || line.Equals ("")) {
+						printComment (line);
 						i--;
 					} else {
 						count++;
@@ -98,6 +99,12 @@ namespace CollisionDetectionSystem
 				}
 			}
 			return dataList;
+		}
+
+		public void printComment (String commentLine) {
+			if (commentLine.StartsWith("#") ){
+				Console.WriteLine(commentLine);
+			}
 		}
 
 		/**
