@@ -72,14 +72,14 @@ namespace CollisionDetectionSystem
 			double S = C * FF;
 
 			//Result in Kilometers
-			double x = Math.Round(((radius * C) + altitude) * cosLat * Math.Cos (longitude * Math.PI / 180) / 1000, 3);
-			double y = Math.Round(((radius * C) + altitude) * cosLat * Math.Sin (longitude * Math.PI / 180) / 1000, 3);
-			double z = Math.Round(((radius * S) + altitude) * sinLat / 1000, 3);
+			double xk = Math.Round(((radius * C) + altitude) * cosLat * Math.Cos (longitude * Math.PI / 180) / 1000, 3);
+			double yk = Math.Round(((radius * C) + altitude) * cosLat * Math.Sin (longitude * Math.PI / 180) / 1000, 3);
+			double zk = Math.Round(((radius * S) + altitude) * sinLat / 1000, 3);
 
 			//Result in Nautical miles
-//			double x = Math.Round(((radius * C) + altitude) * cosLat * Math.Cos (longitude * Math.PI / 180) * 0.000539957, 3);
-//			double y = Math.Round(((radius * C) + altitude) * cosLat * Math.Sin (longitude * Math.PI / 180) * 0.000539957, 3);
-//			double z = Math.Round(((radius * S) + altitude) * sinLat * 0.000539957, 3);
+			double x = Math.Round(xk * 0.539957, 4);
+			double y = Math.Round(yk * 0.539957, 4);
+			double z = Math.Round(zk * 0.539957, 4);
 
 			return Vector<double>.Build.DenseOfArray (new double[3]{ x, y, z });
 		}

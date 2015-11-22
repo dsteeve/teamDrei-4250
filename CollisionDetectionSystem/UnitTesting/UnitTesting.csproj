@@ -36,6 +36,7 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FasterAircraftTest.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="MockTransponderTest.cs" />
     <Compile Include="CollisionDetectionSystemTest.cs" />
     <Compile Include="Distances.cs" />
+    <Compile Include="TransponderRecieverTimerTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
