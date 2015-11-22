@@ -41,15 +41,15 @@ namespace UnitTesting
 			MathCalcUtility utility = new MathCalcUtility ();
 			Vector<double> result = utility.CalculateCoordinate (34.0522, -118.40806, 0);
 
-			Assert.AreEqual (-2516.715, result[0]);
-			Assert.AreEqual (-4653.003, result[1]);
-			Assert.AreEqual (3551.245, result[2]);
+			Assert.AreEqual (-1358.9179, result[0]);
+			Assert.AreEqual (-2512.4215, result[1]);
+			Assert.AreEqual (1917.5196, result[2]);
 
 			Vector<double> result2 = utility.CalculateCoordinate (100, 100, 100);
 
-			Assert.AreEqual (192.955, result2 [0]);
-			Assert.AreEqual (-1094.301, result2 [1]);
-			Assert.AreEqual (6259.641, result2 [2]);
+			Assert.AreEqual (104.1874, result2 [0]);
+			Assert.AreEqual (-590.8755, result2 [1]);
+			Assert.AreEqual (3379.937, result2 [2]);
 
 		}
 

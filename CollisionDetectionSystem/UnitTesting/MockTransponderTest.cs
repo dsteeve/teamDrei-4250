@@ -23,7 +23,7 @@ namespace UnitTesting
 		[TestFixtureSetUp] 
 		public void Init() {
 			broadedCastedData = false;
-			unit.SendDataEvent += this.GotSendDataEvent;
+			//unit.SendDataEvent += this.GotSendDataEvent;
 		}
 
 
@@ -120,6 +120,22 @@ namespace UnitTesting
 			Assert.AreEqual (-90.049792, list[1].Longitude);
 			Assert.AreEqual (3000, list[1].Altitude);
 			Assert.AreEqual ("AE1200", list[1].SquawkCode.ToString());
+		}
+
+		[Test]
+		public void sendDataTestMac ()
+		{
+			CollisionDetectionSystemClass system = new CollisionDetectionSystemClass ();
+			String path = System.IO.Directory.GetCurrentDirectory ();
+
+			path = path.Split (new String[]{ "UnitTesting/" }, StringSplitOptions.None) [0] +
+				"SystemTesting/TestData/SystemTests/TestFiles/1";
+			String argument = "testdir=" + path;
+
+			system.Start (StringUtility.getArgValue(argument));
+			//unit.Start (StringUtility.getArgValue(argument));
+
+			Assert.True(true);
 		}
 	}
 }

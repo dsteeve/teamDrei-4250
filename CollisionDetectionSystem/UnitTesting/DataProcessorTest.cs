@@ -56,24 +56,44 @@ namespace UnitTesting
 			dataProcessor.AircraftDidEnterRadarRangeEvent += radarHandler.AircraftDidEnterRadarRangeEvent;
 			dataProcessor.AircraftWillIntersectInTimeEvent += audioHandler.OnAircraftWillIntersectInTimeEvent;
 
-			TransponderData thisAircraftData1 = new TransponderData ("00:00", "B1E24F", 90, 0, 43643247.7, "1200");
-			TransponderData thisAircraftData2 = new TransponderData ("00:00", "B1E24F", 89.9986, 0, 43643247.7, "1200");
-			TransponderData intruderData1 = new TransponderData ("00:00", "1A23", 89.99428, 0, 43643247.9, "1200");
-			TransponderData intruderData2 = new TransponderData ("00:00", "1A23", 89.99542, 0, 43643247.8, "1200");
+			TransponderData thisAircraftData1 = new TransponderData ("00:00", "B1E24F", 90, 0, 8247.7, "1200");
+			TransponderData thisAircraftData2 = new TransponderData ("00:00", "B1E24F", 89.9986, 0, 8247.8, "1200");
+			TransponderData thisAircraftData3 = new TransponderData ("00:00", "B1E24F", 89.98212, 0, 8248, "1200");
+			TransponderData thisAircraftData4 = new TransponderData ("00:00", "B1E24F", 89.97318, 0, 8248.4, "1200");
+			TransponderData thisAircraftData5 = new TransponderData ("00:00", "B1E24F", 89.96423, 0, 8248.9, "1200");
 
-			dataProcessor.ThisAircraft.DataBuffer.Add(Vector<double>.Build.DenseOfArray(new double[3]{0, 0, 50000}));
+			TransponderData intruderData1 = new TransponderData ("00:00", "1A23", 89.92847, 0, 8252.7, "1200");
+			TransponderData intruderData2 = new TransponderData ("00:00", "1A23", 89.93741, 0, 8251.5, "1200");
+			TransponderData intruderData3 = new TransponderData ("00:00", "1A23", 89.94635, 0, 8250.5, "1200");
+			TransponderData intruderData4 = new TransponderData ("00:00", "1A23", 89.95529, 0, 8249.6, "1200");
+			TransponderData intruderData5 = new TransponderData ("00:00", "1A23", 89.96423, 0, 8248.9, "1200");
+
+			dataProcessor.ThisAircraft.DataBuffer.Add(Vector<double>.Build.DenseOfArray(new double[3]{0, 0, 6365}));
 
 			var list1 = new  List<TransponderData> ();
 			var list2 = new  List<TransponderData> ();
+			var list3 = new  List<TransponderData> ();
+			var list4 = new  List<TransponderData> ();
+			var list5 = new  List<TransponderData> ();
 
 			list1.Add (thisAircraftData1);
 			list1.Add (intruderData1);
 			list2.Add (thisAircraftData2);
 			list2.Add (intruderData2);
+			list3.Add (thisAircraftData3);
+			list3.Add (intruderData3);
+			list4.Add (thisAircraftData4);
+			list4.Add (intruderData4);
+			list5.Add (thisAircraftData5);
+			list5.Add (intruderData5);
 
 			dataProcessor.OnPostDataEvent (list1);
 			dataProcessor.OnPostDataEvent (list2);
+			dataProcessor.OnPostDataEvent (list3);
+			dataProcessor.OnPostDataEvent (list4);
+			dataProcessor.OnPostDataEvent (list5);
 		}
+
 
 	}
 }

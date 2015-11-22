@@ -88,6 +88,7 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (aircraft.DataBuffer[0], ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
+				Console.WriteLine("Distance to aircraft " + aircraft.Identifier + ": " + distance);
 				if (distance < 6.1) {
 					return true;
 				}
@@ -103,8 +104,8 @@ namespace CollisionDetectionSystem
 					if (intruder.DataBuffer.Count > 0) {
 						var distance = MathUtility.Distance (intruder.DataBuffer [0], ThisAircraft.DataBuffer [0]);
 
-						//Remove if greater than 6 Nautical Miles
-						if (distance > 6.1) {
+						//Remove if greater than 20 Nautical Miles
+						if (distance > 20) {
 							Intruders.Remove (intruder);
 						}
 
@@ -158,10 +159,10 @@ namespace CollisionDetectionSystem
 			//Calculate time...
 			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 0.0822894); //radius of 500 feet (in NM)
 
-			Console.WriteLine ("time until intersection: " + timeUntilIntersection);
-
 			if (timeUntilIntersection > 0) {
 				
+				Console.WriteLine ("time until intersection: " + timeUntilIntersection);
+
 				if (intruder.DataBuffer [0] [2] > ThisAircraft.DataBuffer [0] [2]) {
 					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);
 				} else {
@@ -173,8 +174,6 @@ namespace CollisionDetectionSystem
 			if(WithinRadarRange(intruder)){
 				AircraftDidEnterRadarRangeEvent(intruder);
 			}
-				
-				
 		}
 
 		#endregion

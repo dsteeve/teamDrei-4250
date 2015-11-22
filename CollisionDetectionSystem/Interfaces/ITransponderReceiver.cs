@@ -8,9 +8,8 @@ namespace CollisionDetectionSystem
 
 	public interface ITransponderReceiver
 	{
-		void ReceiveData(TransponderData tdata);
+		void ReceiveData(List<TransponderData> data);
 		void PrepareDataForPost( List<TransponderData> data);
-		void StartTimer();
 		event ListDataDel PostDataEvent;
 	}
 }

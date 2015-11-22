@@ -16,7 +16,7 @@ namespace CollisionDetectionSystem
 	{
 		#region IMockTransponder implementation
 
-	public event DataDel SendDataEvent;
+	public event ListDataDel SendDataEvent;
 
 		// will get a directory name to read the files in
 		// the files will have a list of fake data to go through 
@@ -140,8 +140,10 @@ namespace CollisionDetectionSystem
 
 			for (int i = 0; i< data.Count; i++ ) {
 				Console.WriteLine ("sending mocked data: " + data [i]);
-				SendDataEvent (data[i]);
+				//SendDataEvent (data[i]);
 			}
+
+			SendDataEvent (data);
 		}
 
 		#endregion

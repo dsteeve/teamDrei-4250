@@ -40,46 +40,16 @@ namespace CollisionDetectionSystem
 		//			}
 		//		}
 
-		public void StartTimer(){
-			DataList = new List<TransponderData> ();
-			Timer myTimer = new Timer();
-			myTimer.Elapsed += new ElapsedEventHandler(TimeEvent);
-			myTimer.Interval = 500; // 500 ms is a half second
-			myTimer.Start();
-		}
-
-		public void TimeEvent(object source, ElapsedEventArgs e)
+		public void ReceiveData (List<TransponderData> data)
 		{
-			if (DataList.Count > 0) {
-				PrepareDataForPost (DataList);
-				DataList = new List<TransponderData> (); //clear the list
-			}
+			PrepareDataForPost (data);
 		}
-
-		List<TransponderData> DataList;
-
-		public void ReceiveData (TransponderData data)
-		{
-
-			//Remove if we recieved newer data with in the 0.5 seconds
-			//and then we just replace it with the newer data.
-			//This may or may not be the best way to do this.
-			//If you guys have a better way by all means do it.
-			foreach (var d in DataList) {
-				if (d.Icao == data.Icao) {
-					DataList.Remove (d);
-				}
-			}
-		
-			DataList.Add(data);
-		}
-
-
+			
 		/**
 		 * DataProcessor onPostDataEvent listens to this PostDataEvent
 		 * 
 		 */
-		public void PrepareDataForPost ( List<TransponderData> data)
+		public void PrepareDataForPost (List<TransponderData> data)
 		{
 			//Call event, anything attached to this event delegate will be executed
 			PostDataEvent (data); 
