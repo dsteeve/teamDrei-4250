@@ -112,7 +112,7 @@ namespace CollisionDetectionSystem
 			var coordinate = MathUtility.CalculateCoordinate (data.Latitude, data.Longitude, data.Altitude);
 			aircraft.DataBuffer.Insert (0, coordinate);
 
-			if (aircraft.DataBuffer.Count > 2) {
+			if (aircraft.DataBuffer.Count > 1) {
 				aircraft.Velocity = MathUtility.CalculateVector (aircraft.DataBuffer [1], aircraft.DataBuffer [0]);
 			}
 
