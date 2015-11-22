@@ -27,6 +27,7 @@ namespace CollisionDetectionSystem
 		 */
 		public void Start(){
 			SetupDelegates ();
+			TransponderReceiver.StartTimer ();
 		}
 
 		/**

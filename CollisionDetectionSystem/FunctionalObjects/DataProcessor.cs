@@ -23,11 +23,24 @@ namespace CollisionDetectionSystem
 		public event TimeDel AircraftWillIntersectInTimeEvent;
 		public event AircraftDel AircraftDidEnterRadarRangeEvent;
 
-		//calls update aircraft
-		public void OnPostDataEvent ( TransponderData tdata) 
+		public void OnPostDataEvent (List<TransponderData> data) 
 		{
-			//update ourselves or another aircraft
+			//Update all intruders and self
+			//The list will always contain ourself at least.
+			foreach (var tdata in data) {
+				Update (tdata);
+			}
 
+			RemoveOutOfRangeIntruders ();
+
+			//Then we check if any of the intruders are now in proximity
+			if (Intruders != null && Intruders.Count > 0 && ThisAircraft.Velocity != null) {
+				DetermineProximityOfIntruders ();
+			}
+		}
+
+		private void Update(TransponderData tdata){
+			
 			if (tdata.Icao == ThisAircraft.Identifier) {
 				UpdateAircraftFromData(tdata, ThisAircraft);
 			} else {
@@ -45,7 +58,6 @@ namespace CollisionDetectionSystem
 				}
 			}
 
-			//RemoveOutOfRangeIntruders ();
 		}
 
 		private void AddNewIntruder(TransponderData data)
@@ -112,7 +124,7 @@ namespace CollisionDetectionSystem
 			var coordinate = MathUtility.CalculateCoordinate (data.Latitude, data.Longitude, data.Altitude);
 			aircraft.DataBuffer.Insert (0, coordinate);
 
-			if (aircraft.DataBuffer.Count > 2) {
+			if (aircraft.DataBuffer.Count > 1) {
 				aircraft.Velocity = MathUtility.CalculateVector (aircraft.DataBuffer [1], aircraft.DataBuffer [0]);
 			}
 
@@ -121,10 +133,20 @@ namespace CollisionDetectionSystem
 				aircraft.DataBuffer.RemoveAt (aircraft.DataBuffer.Count - 1);
 			}
 
-			if (aircraft != ThisAircraft && aircraft.Velocity != null) {
-				Console.WriteLine("our aircraft: " + ThisAircraft );
-				Console.WriteLine("intruder aircraft" + aircraft);
-				DetermineProximityOfIntruder (aircraft);
+//			if (aircraft != ThisAircraft && aircraft.Velocity != null) {
+//				Console.WriteLine("our aircraft: " + ThisAircraft );
+//				Console.WriteLine("intruder aircraft" + aircraft);
+//				DetermineProximityOfIntruder (aircraft);
+//			}
+		}
+
+		private void DetermineProximityOfIntruders () {
+			foreach (var intruder in Intruders) {
+				if (intruder.Velocity != null) {
+					Console.WriteLine("our aircraft: " + ThisAircraft );
+					Console.WriteLine("intruder aircraft" + intruder);
+					DetermineProximityOfIntruder (intruder);
+				}
 			}
 		}
 
@@ -134,7 +156,7 @@ namespace CollisionDetectionSystem
 
 			//If in proximity...
 			//Calculate time...
-			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 5);
+			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 0.0822894); //radius of 500 feet (in NM)
 
 			Console.WriteLine ("time until intersection: " + timeUntilIntersection);
 

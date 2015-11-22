@@ -20,11 +20,11 @@ namespace UnitTesting
 		}
 
 
-		[TestFixtureSetUp] 
-		public void Init() {
-			postDataEventFired = false;
-			unit.PostDataEvent += this.GotPostDataEvent;
-		}
+//		[TestFixtureSetUp] 
+//		public void Init() {
+//			postDataEventFired = false;
+//			unit.PostDataEvent += this.GotPostDataEvent;
+//		}
 
 
 		[Test ()]

@@ -12,7 +12,7 @@ namespace CollisionDetectionSystem
 		Aircraft ThisAircraft { get; set; }
 		List<Aircraft> Intruders { get; set; }
 
-		void OnPostDataEvent( TransponderData tdata);
+		void OnPostDataEvent(List<TransponderData> data);
 
 		event TimeDel AircraftWillIntersectInTimeEvent;
 		event AircraftDel AircraftDidEnterRadarRangeEvent;
