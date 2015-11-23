@@ -62,7 +62,10 @@ namespace CollisionDetectionSystem
 		//LLA to ECEF conversion. Reference: http://www.mathworks.com/help/aeroblks/llatoecefposition.html
 		//This is good to http://includesoft.com/DSP/ecef_calculation_for_range_and_b.htm
 		public Vector<double> CalculateCoordinate(double latitude, double longitude, double altitude){
-			
+
+            //convert altitude to meters
+            altitude = altitude * .3048;
+
 			double radius = 6378137.0; //radius of earth in meters.
 			double flatteningFactor = 1.0 / 298.257223563; //Flattening factor WGS84 Model.
 			double cosLat = Math.Cos (latitude * Math.PI / 180.0);
