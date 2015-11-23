@@ -94,9 +94,9 @@ namespace CollisionDetectionSystem
 			double ySquared = Math.Pow (coordinate1 [1] - coordinate2 [1], 2);
 			double zSquared = Math.Pow (coordinate1 [2] - coordinate2 [2], 2);
 
-			double kms = Math.Round(Math.Sqrt (xSquared + ySquared + zSquared), 3); //Result in Kilometers
-			return Math.Round(kms * 0.539957, 4);  //return Nautical Miles value
-
+			//Result is in whatever the coordinates were calculated in. (nm's)
+			double nms = Math.Round(Math.Sqrt (xSquared + ySquared + zSquared), 3); 
+			return nms;
 		}
 
 		#endregion
