@@ -64,6 +64,7 @@
     <Compile Include="FunctionalObjects\Threat.cs" />
     <Compile Include="FunctionalObjects\StringUtility.cs" />
     <Compile Include="FunctionalObjects\Position.cs" />
+    <Compile Include="Logger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
