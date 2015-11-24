@@ -162,8 +162,8 @@ namespace CollisionDetectionSystem
 			if (timeUntilIntersection > 0) {
 				
 				Console.WriteLine ("time until intersection: " + timeUntilIntersection);
-
-				if (intruder.DataBuffer [0] [2] > ThisAircraft.DataBuffer [0] [2]) {
+                
+				if (intruder.DataBuffer[0].L2Norm() > ThisAircraft.DataBuffer[0].L2Norm()) {
 					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);
 				} else {
 					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Below);
