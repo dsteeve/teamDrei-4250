@@ -12,8 +12,16 @@ namespace CollisionDetectionSystem
 		public double Intersection (Aircraft aircraft1, Aircraft aircraft2, double radius)
 		{
 			//Positions
-			Vector<double> c1 = Vector<double>.Build.DenseOfArray(new double[3]{aircraft1.DataBuffer[0][0], aircraft1.DataBuffer[0][1], aircraft1.DataBuffer[0][2]});
-			Vector<double> c2 = Vector<double>.Build.DenseOfArray(new double[3]{aircraft2.DataBuffer[0][0], aircraft2.DataBuffer[0][1], aircraft2.DataBuffer[0][2]});
+			Vector<double> c1 = Vector<double>.Build.DenseOfArray (new double[3] {
+				aircraft1.DataBuffer [0] [0],
+				aircraft1.DataBuffer [0] [1],
+				aircraft1.DataBuffer [0] [2]
+			});
+			Vector<double> c2 = Vector<double>.Build.DenseOfArray (new double[3] {
+				aircraft2.DataBuffer [0] [0],
+				aircraft2.DataBuffer [0] [1],
+				aircraft2.DataBuffer [0] [2]
+			});
 
 			//Console.WriteLine ("aircraft1-us vector" + c1);
 			//Console.WriteLine ("aircraft2-them  vector" + c2);
@@ -38,9 +46,10 @@ namespace CollisionDetectionSystem
 				//No intersection if negative
 				return -1;
 			}
+			Console.WriteLine ("decider is: " + decider);
 
-			double plusResult = -1 * dDotW + Math.Sqrt(decider) / wDotW;
-			double minusResult = -1 * dDotW - Math.Sqrt(decider) / wDotW; //I believe this is when they first touch, the plus result is when they exit.
+			double plusResult =  (-1 * dDotW + Math.Sqrt(decider) ) / wDotW;
+			double minusResult = (-1 * dDotW - Math.Sqrt(decider) )/ wDotW; //I believe this is when they first touch, the plus result is when they exit.
 
 			if (minusResult < 0) {
 				return -1; //No intersection
@@ -48,6 +57,7 @@ namespace CollisionDetectionSystem
 				return minusResult;
 			}
 		}
+			
 
 		public Vector<double> CalculateVector (Vector<double> coordinateFrom, Vector<double> coordinateTo)
 		{
