@@ -1,4 +1,7 @@
-﻿using System;
+﻿#define TRACE
+
+using System;
+using System.Diagnostics;
 using MathNet.Numerics.LinearAlgebra;
 
 namespace CollisionDetectionSystem
@@ -7,8 +10,11 @@ namespace CollisionDetectionSystem
 	{
 		#region IMathCalcUtility implementation
 
-		//This doesn't work yet, math isnt quite right. Need starting coordinate as well as vector
-		//to make any since. Must of missed something in my notes - Stephen
+		//Formula from Dr Shultz, MSUDenver.com
+		//    lambda = (d*w + sqrt( (d*w)^2 - w*w(d*d - r^2) )
+		// were d is vector distance between 2 aircraft
+		// were w is vector difference in velocity of the aircraft
+		// returns seconds until intersection?
 		public double Intersection (Aircraft aircraft1, Aircraft aircraft2, double radius)
 		{
 			//Positions
@@ -23,15 +29,10 @@ namespace CollisionDetectionSystem
 				aircraft2.DataBuffer [0] [2]
 			});
 
-			//Console.WriteLine ("aircraft1-us vector" + c1);
-			//Console.WriteLine ("aircraft2-them  vector" + c2);
 
 			//Velocities
 			Vector<double> v1 = aircraft1.Velocity;
 			Vector<double> v2 = aircraft2.Velocity;
-
-			//Console.WriteLine ("aircraft1-us velocity" + v1);
-			//Console.WriteLine ("aircraft2-them velocity" + v2);
 
 			Vector<double> d = c1.Subtract (c2);
 			Vector<double> w = v1.Subtract (v2);
@@ -40,16 +41,18 @@ namespace CollisionDetectionSystem
 			double wDotW = (w.DotProduct (w));
 			double dDotD = (d.DotProduct (d));
 
-			//Console.WriteLine(
 			double decider = Math.Pow(dDotW, 2) - (wDotW * (dDotD - Math.Pow(radius, 2)));
 			if (decider < 0) {
 				//No intersection if negative
 				return -1;
 			}
-			Console.WriteLine ("decider is: " + decider);
+			Trace.WriteLine ("decider is: " + decider);
 
 			double plusResult =  (-1 * dDotW + Math.Sqrt(decider) ) / wDotW;
 			double minusResult = (-1 * dDotW - Math.Sqrt(decider) )/ wDotW; //I believe this is when they first touch, the plus result is when they exit.
+
+			Trace.WriteLine ("plusResult is: " + plusResult);
+			Trace.WriteLine ("minusResult is: " + minusResult);
 
 			if (minusResult < 0) {
 				return -1; //No intersection

@@ -1,4 +1,7 @@
-﻿using System;
+﻿#define TRACE 
+
+using System;
+using System.Diagnostics;
 
 namespace CollisionDetectionSystem
 {
@@ -43,9 +46,9 @@ namespace CollisionDetectionSystem
 		{
 			if (threat != Threat.none) {
 				if (position == Position.Above) {
-					Console.WriteLine ("Descend");
+					Trace.WriteLine ("Descend! Descend!");
 				} else {
-					Console.WriteLine ("Ascend");
+					Trace.WriteLine ("Climb! Climb!");
 				}
 				return true;
 			} else {
