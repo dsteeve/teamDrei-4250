@@ -20,7 +20,7 @@ namespace CollisionDetectionSystem
 
 		public override string ToString ()
 		{
-			return "Aircraft Data--> Identifier:" + Identifier + "  Velocity:" + Velocity + "  DataBuffer:" + toString(DataBuffer); 
+			return "Aircraft Data--> Identifier:" + Identifier + "  Velocity:" + Velocity ; 
 		}
 
 		private String toString(List<Vector<double>> buf){

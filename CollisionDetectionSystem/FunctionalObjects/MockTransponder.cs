@@ -1,6 +1,9 @@
-﻿using System;
+﻿#define TRACE
+
+using System;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -104,7 +107,7 @@ namespace CollisionDetectionSystem
 
 		public void printComment (String commentLine) {
 			if (commentLine.StartsWith("#") ){
-				Console.WriteLine(commentLine);
+				Trace.WriteLine(commentLine);
 			}
 		}
 
@@ -113,12 +116,10 @@ namespace CollisionDetectionSystem
 		 */
 		public List<StreamReader> streamReaders (String testDirName)
 		{
-			//Console.WriteLine ("testdir=" + testDirName);
+			
 			var files = new List<StreamReader> ();
 
 			string[] txtFiles = Directory.GetFiles (testDirName, "*.txt").Select (path => Path.GetFileName (path)).ToArray (); //array of text files   
-
-
 
 			for (int i = 0; i < txtFiles.Length; i++) { //fills list with all streamreaders
 				StreamReader file = new StreamReader (testDirName + Path.DirectorySeparatorChar + txtFiles.GetValue (i));
@@ -136,13 +137,12 @@ namespace CollisionDetectionSystem
 		 */
 		void BroadcastDataEvent(List<TransponderData> data) 
 		{
-			Console.WriteLine ("mocking data list size is :" + data.Count);
+			Trace.WriteLine ("Mocking data list size is :" + data.Count);
 
 			for (int i = 0; i< data.Count; i++ ) {
-				Console.WriteLine ("sending mocked data: " + data [i]);
+				Trace.WriteLine ("sending mocked data: " + data [i]);
 				//SendDataEvent (data[i]);
 			}
-
 			SendDataEvent (data);
 		}
 

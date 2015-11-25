@@ -1,4 +1,7 @@
-﻿using System;
+﻿#define TRACE
+
+using System;
+using System.Diagnostics;
 
 namespace CollisionDetectionSystem
 {
@@ -14,16 +17,14 @@ namespace CollisionDetectionSystem
 
 		public Boolean AircraftDidEnterRadarRangeEventTest (Aircraft intruder)
 		{
-			//TODO:  case for updateRadarScreen call
-
-			UpdateRadarScreen();
+			UpdateRadarScreen(intruder.Identifier);
 			return true;
 		}
 
 		//this method probably needs some coordinates of the aircraft
-		private Boolean UpdateRadarScreen ()
+		private Boolean UpdateRadarScreen (String id)
 		{
-			Console.WriteLine ("the radar would be updated here.");
+			Trace.WriteLine ("update radar for plane : " + id);
 			return true;
 		}
 

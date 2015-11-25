@@ -1,4 +1,7 @@
-﻿using System;
+﻿#define TRACE
+
+using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using MathNet.Numerics.LinearAlgebra;
 
@@ -88,7 +91,7 @@ namespace CollisionDetectionSystem
 				var distance = MathUtility.Distance (aircraft.DataBuffer[0], ThisAircraft.DataBuffer [0]);
 
 				//if distance is less than 6 NM return true
-				Console.WriteLine("Distance to aircraft " + aircraft.Identifier + ": " + distance);
+				Trace.WriteLine("Distance to aircraft " + aircraft.Identifier + ": " + distance);
 				if (distance < 6.1) {
 					return true;
 				}
@@ -144,8 +147,8 @@ namespace CollisionDetectionSystem
 		private void DetermineProximityOfIntruders () {
 			foreach (var intruder in Intruders) {
 				if (intruder.Velocity != null) {
-					Console.WriteLine("our aircraft: " + ThisAircraft );
-					Console.WriteLine("intruder aircraft" + intruder);
+					Trace.WriteLine("our aircraft: " + ThisAircraft );
+					Trace.WriteLine("intruder aircraft" + intruder);
 					DetermineProximityOfIntruder (intruder);
 				}
 			}
@@ -161,7 +164,7 @@ namespace CollisionDetectionSystem
 
 			if (timeUntilIntersection > 0) {
 				
-				Console.WriteLine ("time until intersection: " + timeUntilIntersection);
+				Trace.WriteLine ("time until intersection: " + timeUntilIntersection);
                 
 				if (intruder.DataBuffer[0].L2Norm() > ThisAircraft.DataBuffer[0].L2Norm()) {
 					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);

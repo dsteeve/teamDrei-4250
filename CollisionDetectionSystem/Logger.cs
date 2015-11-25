@@ -5,8 +5,7 @@ namespace CollisionDetectionSystem
 {
 	public class Logger
 	{
-		public StreamWriter toLog;
-		string path = @"c:\CollisionSystemLog.txt";
+		string path = @"cds.log";
 
 		public Logger ()
 		{
@@ -15,28 +14,17 @@ namespace CollisionDetectionSystem
 				//removes the file if it exists 
 				File.Delete(path);
 			}	
-			//creates the file
-			//FileStream.create (path);
-
-			try{
-				//attepts to create a stream writer that points at the file
-				toLog = new StreamWriter (path);
-			}
-			catch(Exception E){
-				Console.WriteLine(E.GetBaseException());
-			}
-
+				
 		}
 
-		//write method that takes a string and an event that has a message, the log creates a line that is the concadination of the two.
-//		public void write(string line, BuildEventArgs message){
-//			toLog.WriteLine (line + message.Message);
-//		}
-
-		//used to close the connection to the file
-		public void shutDown(){
-			toLog.Close ();
+		//write method that takes a string, write it out with a timestamp
+		public  void log(string message){
+			using (StreamWriter outputFile = new StreamWriter(path, true)) {
+				outputFile.WriteLine( message);
+			}
+			//Dispose is automatically handled.
 		}
 	}
+		
 }
 

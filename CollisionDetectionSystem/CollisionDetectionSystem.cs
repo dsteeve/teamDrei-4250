@@ -1,4 +1,7 @@
+#define TRACE
+
 using System;
+using System.Diagnostics;
 using MathNet.Numerics.LinearAlgebra;
 
 
@@ -60,9 +63,9 @@ namespace CollisionDetectionSystem
 		/**
 		 * start the mock transponder and act like we are hearing 
 		 * actual transponder pings
-		 * 
 		 */
 		void StartMockTransponder(String testDirName){
+			Trace.WriteLine("======= starting in test mode with testDirectory "+ testDirName);
 			MockTransponder.Start (testDirName);
 		}
 			
