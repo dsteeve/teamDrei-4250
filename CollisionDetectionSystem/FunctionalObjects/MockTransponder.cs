@@ -61,7 +61,7 @@ namespace CollisionDetectionSystem
 			dataList.RemoveAt(0);
 
 			BroadcastDataEvent (listToSend);
-			System.Threading.Thread.Sleep (20);
+			System.Threading.Thread.Sleep (200);
 
 			return dataList;
 		}

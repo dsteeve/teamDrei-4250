@@ -166,16 +166,8 @@ namespace CollisionDetectionSystem
 			Trace.WriteLine ("time until intersection: " + timeUntilIntersection);
 
 			if (timeUntilIntersection > 0) {
-				
-				CheckAltitudeDifference (intruder, timeUntilIntersection);
-                
-				
-				/*if (intruder.DataBuffer [0].L2Norm () > ThisAircraft.DataBuffer [0].L2Norm ()) {
-					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);
-				} else {
-					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Below);
-				}*/
-
+				//this is a refactored method defined below
+				CheckAltitudeDifference (intruder, timeUntilIntersection);                
 			} 
 			/*otherwise time until intersection is negative (actually -1) and we overlapped
 			here we want to continue to give instructions to the pilot until the distance
@@ -186,10 +178,7 @@ namespace CollisionDetectionSystem
 					MathUtility.Distance(ThisAircraft.DataBuffer[0],intruder.DataBuffer[0]))
 					CheckAltitudeDifference (intruder, timeUntilIntersection);
 			}
-
-
 				
-
 			//If in radar range...
 			if(WithinRadarRange(intruder)){
 				AircraftDidEnterRadarRangeEvent(intruder);
