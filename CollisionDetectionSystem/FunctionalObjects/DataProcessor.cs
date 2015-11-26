@@ -174,8 +174,10 @@ namespace CollisionDetectionSystem
 			between the planes begins to increase, I think that once we exit the critical range
 			of .0822894 nm we will no longer report from here*/
 			else {
-				if (MathUtility.Distance(ThisAircraft.DataBuffer[1],intruder.DataBuffer[1]) > 
+				if ((MathUtility.Distance(ThisAircraft.DataBuffer[1],intruder.DataBuffer[1]) > 
 					MathUtility.Distance(ThisAircraft.DataBuffer[0],intruder.DataBuffer[0]))
+					&& (MathUtility.Distance(ThisAircraft.DataBuffer[0],intruder.DataBuffer[0])
+						< .0822894))
 					CheckAltitudeDifference (intruder, timeUntilIntersection);
 			}
 				
