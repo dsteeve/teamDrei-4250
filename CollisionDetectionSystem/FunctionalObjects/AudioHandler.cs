@@ -25,16 +25,17 @@ namespace CollisionDetectionSystem
 			//case for theat level determined  <30 for orange, < 60 for yellow, < 15 for red
 			if (time > 60) {
 				return Threat.none;
-				} 
-			else if (time <= 60 && time > 30) {
-					return Threat.yellow;
-				} 
-			else if (time <= 30 && time > 15) {
-					return Threat.orange;
-				} 
-			else if (time <= 15 && time >= 0) {
-					return Threat.red;
-				}
+			} else if (time <= 60 && time > 30) {
+				return Threat.yellow;
+			} else if (time <= 30 && time > 15) {
+				return Threat.orange;
+			} else if (time <= 15 && time >= 0) {
+				return Threat.red;
+			} 
+			//added this to warn inside overlap
+			else if (time == -1) {
+				return Threat.red;
+			}
 			else{
 				return Threat.none;
 			}

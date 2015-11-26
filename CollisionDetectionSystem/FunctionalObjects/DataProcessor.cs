@@ -157,25 +157,50 @@ namespace CollisionDetectionSystem
 		//MathCalcUtility to determine proximity of our aircraft to another
 		private void DetermineProximityOfIntruder (Aircraft intruder)
 		{
+			
 
 			//If in proximity...
 			//Calculate time...
 			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 0.0822894); //radius of 500 feet (in NM)
 
+			Trace.WriteLine ("time until intersection: " + timeUntilIntersection);
+
 			if (timeUntilIntersection > 0) {
 				
-				Trace.WriteLine ("time until intersection: " + timeUntilIntersection);
+				CheckAltitudeDifference (intruder, timeUntilIntersection);
                 
-				if (intruder.DataBuffer[0].L2Norm() > ThisAircraft.DataBuffer[0].L2Norm()) {
+				
+				/*if (intruder.DataBuffer [0].L2Norm () > ThisAircraft.DataBuffer [0].L2Norm ()) {
 					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);
 				} else {
 					AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Below);
-				}
+				}*/
+
+			} 
+			/*otherwise time until intersection is negative (actually -1) and we overlapped
+			here we want to continue to give instructions to the pilot until the distance
+			between the planes begins to increase, I think that once we exit the critical range
+			of .0822894 nm we will no longer report from here*/
+			else {
+				if (MathUtility.Distance(ThisAircraft.DataBuffer[1],intruder.DataBuffer[1]) > 
+					MathUtility.Distance(ThisAircraft.DataBuffer[0],intruder.DataBuffer[0]))
+					CheckAltitudeDifference (intruder, timeUntilIntersection);
 			}
+
+
+				
 
 			//If in radar range...
 			if(WithinRadarRange(intruder)){
 				AircraftDidEnterRadarRangeEvent(intruder);
+			}
+		}
+		//refactored this method out of DetermineProximityOfIntruder because we will call for different reasons
+		private void CheckAltitudeDifference (Aircraft intruder, double timeUntilIntersection){
+			if (intruder.DataBuffer [0].L2Norm () > ThisAircraft.DataBuffer [0].L2Norm ()) {
+				AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);
+			} else {
+				AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Below);
 			}
 		}
 
