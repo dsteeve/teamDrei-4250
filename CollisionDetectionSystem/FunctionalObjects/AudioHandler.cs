@@ -45,7 +45,7 @@ namespace CollisionDetectionSystem
 		//return true if audio played else false
 		public Boolean PlayAudio (Threat threat, Position position)
 		{
-			if (threat != Threat.none) {
+			/*if (threat != Threat.none) {
 				if (position == Position.Above) {
 					Trace.WriteLine ("Descend! Descend!");
 				} else {
@@ -53,6 +53,26 @@ namespace CollisionDetectionSystem
 				}
 				return true;
 			} else {
+				return false;
+			}*/
+			if (threat == Threat.yellow) {
+				Trace.WriteLine ("Traffic! Traffic!");
+				return true;
+			} 
+			else if (threat == Threat.orange) {
+				Trace.WriteLine ("Warning! Warning!");
+				return true;
+			} 
+			else if (threat == Threat.red) {
+				if (position == Position.Above) {
+					Trace.WriteLine ("Descend! Descend!");
+				} 
+				else {
+					Trace.WriteLine ("Climb! Climb!");
+				}
+				return true;
+			} 
+			else {
 				return false;
 			}
 		}
