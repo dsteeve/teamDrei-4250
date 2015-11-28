@@ -47,8 +47,10 @@ namespace CollisionDetectionSystem
 			}
 		}
 
-		//Sets up all the delegate events, when one of these delegate events are called all methods
-		//that have been assigned to that delegate will be called even if they're from different objects. C# awesomeness!
+		/**
+		 * Sets up all the delegate events, when one of these delegate events are called all methods
+		 *	that have been assigned to that delegate will be called even if they're from different objects. C# awesomeness!
+		 */
 		void SetupDelegates(){
 			MockTransponder.SendDataEvent += TransponderReceiver.ReceiveData;
 			TransponderReceiver.PostDataEvent += DataProcessor.OnPostDataEvent;

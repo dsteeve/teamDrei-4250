@@ -21,9 +21,11 @@ namespace CollisionDetectionSystem
 
 	public event ListDataDel SendDataEvent;
 
-		// will get a directory name to read the files in
-		// the files will have a list of fake data to go through 
-		// and announce location every 500ms
+		/** 
+		 * Takes a directory name to read the system test files in
+		 * The files will have a list of fake data to go through 
+		 * and announce location every 500ms
+		 */
 		public void Start (String testDirName)  
 		{
 			var dataList = buildTransporterDataList (testDirName);
