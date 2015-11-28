@@ -38,9 +38,7 @@ namespace UnitTesting
 		{
 			TransponderData td = new TransponderData ("10:00Z.253 T", "12345F", 100.5, -15.9, 6000, "GW400");
 
-			DateTime time = DateTime.Parse("14:00:00.253");
-			Console.WriteLine (time.Millisecond);
-			Assert.AreEqual (time, td.PingTimestamp);
+			Assert.IsNull (td.PingTimestamp);
 			Assert.AreEqual ("12345F", td.Icao);
 			Assert.AreEqual (100.5, td.Latitude);
 			Assert.AreEqual (-15.9, td.Longitude);

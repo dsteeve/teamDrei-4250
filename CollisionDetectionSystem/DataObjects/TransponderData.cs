@@ -9,7 +9,7 @@ namespace CollisionDetectionSystem
 {
 	public class TransponderData
 	{
-		public DateTime PingTimestamp {  get; private set; }
+		public Nullable<DateTime> PingTimestamp {  get; private set; }
 		public String Timestamp {  get; private set; }
 		public string Icao {  get; private set; }
 		public double Latitude {  get; private set; }
@@ -32,18 +32,23 @@ namespace CollisionDetectionSystem
 			SquawkCode = squawkCode; //flight number for non-ga flights.
 
 		}
-
+		/**
+		 * Given string representation of timestamp
+		 * make a DateTime object
+		 * Set to null if parse fails.
+		 */
 		private void setPingTimestamp (String strTimestamp){
-			PingTimestamp = DateTime.Parse(strTimestamp);
+			try {
+				PingTimestamp = DateTime.Parse(strTimestamp);
+			} catch (Exception e) {
+				Console.WriteLine ("Unable to parse timestamp: " + strTimestamp);
+				PingTimestamp = null ;
+			}
 		}
-
-		//nothing calls this yet
-		private DateTimeOffset covertToDateTimeOffset (String strTs) {
-			DateTimeOffset dateTimeTzobj = new DateTimeOffset ();
-			//TODO:  use the strTs to create the datetimeoffset.
-			return dateTimeTzobj;
-		}
-
+			
+		/**
+		 * Return String respresentation
+		 */
 		public override string ToString ()
 		{
 			return "TransponderData--> ICAO:" + Icao + "  Latitude:" + Latitude + "  Longitude:" + Longitude + "  Altitude:"+Altitude; 
