@@ -46,7 +46,7 @@ namespace CollisionDetectionSystem
 
 		public override string ToString ()
 		{
-			return "TransponderData--> Icao:" + Icao + "  Latitude:" + Latitude + "  Longitude:" + Longitude + "  Altitude:"+Altitude; 
+			return "TransponderData--> ICAO:" + Icao + "  Latitude:" + Latitude + "  Longitude:" + Longitude + "  Altitude:"+Altitude; 
 		}
 	}
 }

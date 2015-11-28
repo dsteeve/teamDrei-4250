@@ -5,6 +5,9 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace CollisionDetectionSystem
 {
+	/**
+	 * Aircraft data
+	 */
 	public class Aircraft
 	{
 		public string Identifier { get; private set; }
@@ -20,7 +23,7 @@ namespace CollisionDetectionSystem
 
 		public override string ToString ()
 		{
-			return "Aircraft Data--> Identifier:" + Identifier + "  Velocity:" + Velocity ; 
+			return "Aircraft Data--> Identifier: " + Identifier + "  Velocity: " + Velocity ; 
 		}
 
 		private String toString(List<Vector<double>> buf){

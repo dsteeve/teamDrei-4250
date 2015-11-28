@@ -2,6 +2,7 @@
 using System;
 using CollisionDetectionSystem;
 using System.Collections.Generic;
+using System.IO;
 
 namespace UnitTesting
 {
@@ -15,51 +16,50 @@ namespace UnitTesting
 		private MockTransponder unit = new MockTransponder ();
 
 
-		public void GotSendDataEvent(TransponderData td) {
+		public void GotSendDataEvent(List<TransponderData> tdlist) {
 			this.broadedCastedData = true;
+		}
+
+		private String buildTestDir(){
+			
+			String path = System.IO.Directory.GetCurrentDirectory ();
+			String [] pieces = path.Split (new String[]{ "UnitTesting"  }, StringSplitOptions.None);
+			path = pieces[0] + 
+				"SystemTesting" +  Path.DirectorySeparatorChar 
+				+ "TestData" +   Path.DirectorySeparatorChar
+				+ "SystemTests" +  Path.DirectorySeparatorChar + 
+				"TestFiles" +  Path.DirectorySeparatorChar + "testReadFile";
+			Console.WriteLine ("path: " + path);
+			return path;
 		}
 
 
 		[TestFixtureSetUp] 
 		public void Init() {
 			broadedCastedData = false;
-			//unit.SendDataEvent += this.GotSendDataEvent;
+			unit.SendDataEvent += this.GotSendDataEvent;
 		}
 
 
 		[Test ()]
 		public void gotGoodFile ()
 		{
+			String dirname = buildTestDir();
+
 			Assert.IsFalse (broadedCastedData);
-			unit.Start ("goodfilename");
+			unit.Start (dirname);
 
 			//Test that we fired the sendDataEvent
 			Assert.IsTrue (broadedCastedData);
 
 		}
-
-		[Test]
-		public void startTest ()
-		{
-			String path = System.IO.Directory.GetCurrentDirectory ();
-
-			path = path.Split (new String[]{ "UnitTesting\\" }, StringSplitOptions.None) [0] +
-				"SystemTesting\\TestData\\SystemTests\\TestFiles\\1";
-			String argument = "testdir=" + path;
-
-			unit.Start (StringUtility.getArgValue(argument));
-
-			Assert.True(true);
-		}
+			
 
 		[Test]
 		public void streamReadersTest ()
 		{
-			String path = System.IO.Directory.GetCurrentDirectory ();
-
-			path = path.Split (new String[]{ "UnitTesting\\" }, StringSplitOptions.None) [0] +
-				"SystemTesting\\TestData\\SystemTests\\TestFiles\\1";
-			String argument = "testdir=" + path;
+			
+			String argument = "testdir=" +  buildTestDir();
 
 			var readers = unit.streamReaders (StringUtility.getArgValue(argument));
 
@@ -70,22 +70,18 @@ namespace UnitTesting
 		[Test]
 		public void buildTransporterDataListTest ()
 		{
-			String path = System.IO.Directory.GetCurrentDirectory ();
-
-			path = path.Split (new String[]{ "UnitTesting\\" }, StringSplitOptions.None) [0] +
-				"SystemTesting\\TestData\\SystemTests\\TestFiles\\1";
-			String argument = "testdir=" + path;
+			String argument = "testdir=" + buildTestDir();
 
 			var list = unit.buildTransporterDataList (StringUtility.getArgValue(argument));
 
-			Assert.AreEqual ("11/20/2015 12:00:00 PM", list[3].PingTimestamp.ToString());
+			Assert.AreEqual ("11/27/2015 12:00:00 PM", list[3].PingTimestamp.ToString());
 			Assert.AreEqual ("CE64B2", list[0].Icao.ToString());
 			Assert.AreEqual (40.050000, list[0].Latitude);
 			Assert.AreEqual (-89.950000, list[0].Longitude);
 			Assert.AreEqual (3500, list[0].Altitude);
 			Assert.AreEqual ("00HN00", list[0].SquawkCode.ToString());
 
-			Assert.AreEqual ("11/20/2015 12:00:00 PM", list[1].PingTimestamp.ToString());
+			Assert.AreEqual ("11/27/2015 12:00:00 PM", list[1].PingTimestamp.ToString());
 			Assert.AreEqual ("B1E24F", list[1].Icao.ToString());
 			Assert.AreEqual (39.950000, list[1].Latitude);
 			Assert.AreEqual (-90.050000, list[1].Longitude);
@@ -97,11 +93,7 @@ namespace UnitTesting
 		[Test]
 		public void sendDataTest ()
 		{
-			String path = System.IO.Directory.GetCurrentDirectory ();
-
-			path = path.Split (new String[]{ "UnitTesting\\" }, StringSplitOptions.None) [0] +
-				"SystemTesting\\TestData\\SystemTests\\TestFiles\\1";
-			String argument = "testdir=" + path;
+			String argument = "testdir=" + buildTestDir();
 
 			var list = unit.buildTransporterDataList (StringUtility.getArgValue(argument));
 
@@ -121,22 +113,7 @@ namespace UnitTesting
 			Assert.AreEqual (3000, list[1].Altitude);
 			Assert.AreEqual ("AE1200", list[1].SquawkCode.ToString());
 		}
-
-		[Test]
-		public void sendDataTestMac ()
-		{
-			CollisionDetectionSystemClass system = new CollisionDetectionSystemClass ();
-			String path = System.IO.Directory.GetCurrentDirectory ();
-
-			path = path.Split (new String[]{ "UnitTesting/" }, StringSplitOptions.None) [0] +
-				"SystemTesting/TestData/SystemTests/TestFiles/1";
-			String argument = "testdir=" + path;
-
-			system.Start (StringUtility.getArgValue(argument));
-			//unit.Start (StringUtility.getArgValue(argument));
-
-			Assert.True(true);
-		}
+			
 	}
 }
 

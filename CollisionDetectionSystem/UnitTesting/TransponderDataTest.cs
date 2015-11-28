@@ -80,6 +80,20 @@ namespace UnitTesting
 			Assert.AreEqual ("GW400", td.SquawkCode);
 
 		}
+
+		[Test ()]
+		public void transponderData2String ()
+		{
+			TransponderData td = new TransponderData ("14:00:00Z.253 T", "12345F", -7200000, -1000005.3333, 6000, "GW400");
+
+			String tdString = td.ToString ();
+			Console.WriteLine ("tdata to string --" + tdString);
+			Assert.True (tdString.Contains("ICAO:12345F"));
+			Assert.True (tdString.Contains("Latitude:-7200000"));
+			Assert.True (tdString.Contains("Longitude:-1000005.3333"));
+			Assert.True (tdString.Contains("Altitude:6000"));
+
+		}
 	}
 }
 
