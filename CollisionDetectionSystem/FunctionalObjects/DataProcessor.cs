@@ -7,8 +7,13 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace CollisionDetectionSystem
 {
+	/**
+	 * Where all the processing occurs for transponder data and aircrafts.
+	 */
 	public class DataProcessor : IDataProcessor
 	{
+		public static readonly double RADAR_RANGE_NM = 6.1;
+		public static readonly double RADAR_MAX_RANGE_NM = 20.0;
 		//OUR ICAO CODE B1E24F
 		public Aircraft ThisAircraft { get; set; }
 		public List<Aircraft> Intruders { get; set; }
@@ -26,6 +31,9 @@ namespace CollisionDetectionSystem
 		public event TimeDel AircraftWillIntersectInTimeEvent;
 		public event AircraftDel AircraftDidEnterRadarRangeEvent;
 
+		/**
+		 * Entry point for receiving Transponder data
+		 */
 		public void OnPostDataEvent (List<TransponderData> data) 
 		{
 			//Update all intruders and self
@@ -42,6 +50,9 @@ namespace CollisionDetectionSystem
 			}
 		}
 
+		/**
+		 * Update given aircraft with latest transponder data
+		 */
 		private void Update(TransponderData tdata){
 			
 			if (tdata.Icao == ThisAircraft.Identifier) {
@@ -63,6 +74,9 @@ namespace CollisionDetectionSystem
 
 		}
 
+		/**
+		 * Add a new intruder to the list
+		 */
 		private void AddNewIntruder(TransponderData data)
 		{
 			if(WithinRadarRange(data)){
@@ -71,14 +85,19 @@ namespace CollisionDetectionSystem
 				UpdateAircraftFromData (data, newIntruder);
 			}
 		}
-
+			
+		/**
+		 * Determine if given Transponder data is within radar range
+		 * 
+		 * return true if it is, else false.
+		 */
 		private bool WithinRadarRange(TransponderData data){
 			if (ThisAircraft.DataBuffer.Count > 0) {
 				var intruderCoordinate = MathUtility.CalculateCoordinate (data.Latitude, data.Longitude, data.Altitude);
 				var distance = MathUtility.Distance (intruderCoordinate, ThisAircraft.DataBuffer [0]);
 
-				//if distance is less than 6 NM return true
-				if (distance < 6.0) {
+				//if distance is less than 6.1 NM return true
+				if (distance < RADAR_RANGE_NM) {
 					return true;
 				}
 			}
@@ -86,13 +105,17 @@ namespace CollisionDetectionSystem
 			return false;
 		}
 
+		/**
+		 * Determine if given aircraft is within radar range
+		 * return true if it is, else false.
+		 */
 		private bool WithinRadarRange(Aircraft aircraft){
 			if (ThisAircraft.DataBuffer.Count > 0) {
 				var distance = MathUtility.Distance (aircraft.DataBuffer[0], ThisAircraft.DataBuffer [0]);
 
-				//if distance is less than 6 NM return true
+				//if distance is less than 6.1 NM return true
 				Trace.WriteLine("Distance to aircraft " + aircraft.Identifier + ": " + distance);
-				if (distance < 6.1) {
+				if (distance < RADAR_RANGE_NM) {
 					return true;
 				}
 			}
@@ -100,6 +123,11 @@ namespace CollisionDetectionSystem
 			return false;
 		}
 
+		/**
+		 * Remove out of Range Intruders
+		 * out of range is defined as more than 20 nm's
+		 *
+		 */
 		private void RemoveOutOfRangeIntruders()
 		{
 			if(ThisAircraft.DataBuffer.Count > 0){
@@ -108,42 +136,37 @@ namespace CollisionDetectionSystem
 						var distance = MathUtility.Distance (intruder.DataBuffer [0], ThisAircraft.DataBuffer [0]);
 
 						//Remove if greater than 20 Nautical Miles
-						if (distance > 20) {
+						if (distance > RADAR_MAX_RANGE_NM) {
 							Intruders.Remove (intruder);
 						}
-
-						//Remove if greater than 6 Nautical Miles (in km)
-						//if (distance > 11.112) {
-						//	Intruders.Remove (intruder);
-						//}
 					}
 				}
 			}
 		}
-			
-		// convert to cordinates 
-		// look for air craft and list and update if in list, else create new
+
+		/**
+		 * Update Aircrafts with newest data
+		 */
 		private void UpdateAircraftFromData (TransponderData data, Aircraft aircraft)
 		{
+			// convert tdata to cordinates 
 			var coordinate = MathUtility.CalculateCoordinate (data.Latitude, data.Longitude, data.Altitude);
 			aircraft.DataBuffer.Insert (0, coordinate);
 
+			//calc velocity
 			if (aircraft.DataBuffer.Count > 1) {
 				aircraft.Velocity = MathUtility.CalculateVector (aircraft.DataBuffer [1], aircraft.DataBuffer [0]);
 			}
 
-			//remove the last data entry
+			//remove the last data entry (clean up old data)
 			if (aircraft.DataBuffer.Count > 20) {
 				aircraft.DataBuffer.RemoveAt (aircraft.DataBuffer.Count - 1);
 			}
-
-//			if (aircraft != ThisAircraft && aircraft.Velocity != null) {
-//				Console.WriteLine("our aircraft: " + ThisAircraft );
-//				Console.WriteLine("intruder aircraft" + aircraft);
-//				DetermineProximityOfIntruder (aircraft);
-//			}
+				
 		}
-
+		/**
+		 * Determine Proximity of Intruders
+		 */
 		private void DetermineProximityOfIntruders () {
 			foreach (var intruder in Intruders) {
 				if (intruder.Velocity != null) {
@@ -154,31 +177,37 @@ namespace CollisionDetectionSystem
 			}
 		}
 
-		//MathCalcUtility to determine proximity of our aircraft to another
+		/**
+		 * Determine Proximity of given Intruder aircraft
+		 *
+		 */
 		private void DetermineProximityOfIntruder (Aircraft intruder)
 		{
 			
-
-			//If in proximity...
-			//Calculate time...
+			//Calculate time until intersection
 			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 0.0822894); //radius of 500 feet (in NM)
 
 			Trace.WriteLine ("time until intersection: " + timeUntilIntersection);
 
+			//if > 0, then we are on trajectory to intersect.
 			if (timeUntilIntersection > 0) {
-				//this is a refactored method defined below
 				CheckAltitudeDifference (intruder, timeUntilIntersection);                
 			} 
-			/*otherwise time until intersection is negative (actually -1) and we overlapped
-			here we want to continue to give instructions to the pilot until the distance
-			between the planes begins to increase, I think that once we exit the critical range
-			of .0822894 nm we will no longer report from here*/
+			/* otherwise time until intersection is negative (actually -1) and we overlapped.
+			   Here we want to continue to give instructions to the pilot until the distance
+			   between the planes begins to increase.
+			   Once we exit the critical range of .0822894 nm (taking into account our sphere bubble)
+			   we will no longer report from here
+			*/
 			else {
-				if ((MathUtility.Distance(ThisAircraft.DataBuffer[1],intruder.DataBuffer[1]) > 
-					MathUtility.Distance(ThisAircraft.DataBuffer[0],intruder.DataBuffer[0]))
-					&& (MathUtility.Distance(ThisAircraft.DataBuffer[0],intruder.DataBuffer[0])
-						< .0822894))
-					CheckAltitudeDifference (intruder, timeUntilIntersection);
+				if (ThisAircraft.DataBuffer.Count > 1 && intruder.DataBuffer.Count > 1) {
+					if ((MathUtility.Distance (ThisAircraft.DataBuffer [1], intruder.DataBuffer [1]) >
+					    MathUtility.Distance (ThisAircraft.DataBuffer [0], intruder.DataBuffer [0]))
+					    && (MathUtility.Distance (ThisAircraft.DataBuffer [0], intruder.DataBuffer [0])
+					    < .0822894)) {
+						CheckAltitudeDifference (intruder, timeUntilIntersection);
+					}
+				}
 			}
 				
 			//If in radar range...
@@ -186,8 +215,13 @@ namespace CollisionDetectionSystem
 				AircraftDidEnterRadarRangeEvent(intruder);
 			}
 		}
-		//refactored this method out of DetermineProximityOfIntruder because we will call for different reasons
+
+		/**
+		 * Check Altitude Difference between aircrafts
+		 * to determine instruction to give
+		 */
 		private void CheckAltitudeDifference (Aircraft intruder, double timeUntilIntersection){
+			
 			if (intruder.DataBuffer [0].L2Norm () > ThisAircraft.DataBuffer [0].L2Norm ()) {
 				AircraftWillIntersectInTimeEvent (timeUntilIntersection, Position.Above);
 			} else {
