@@ -79,7 +79,7 @@ namespace CollisionDetectionSystem
 
 			var dataList = new List<TransponderData> ();
 			String line = "";
-			int count = 1;
+
 
 			while (files.Any())
 			{
@@ -90,15 +90,15 @@ namespace CollisionDetectionSystem
 						printComment (line);
 						i--;
 					} else {
-						count++;
-						//Console.WriteLine (line + "    " + count / 2); // prints line + the line number, ignores lines with #'s
-
 						string[] splitData = line.Split (',');
 
+						TransponderData tData= null;
 						if (splitData.Length == 6) {
-							TransponderData tData = new TransponderData (splitData [0], splitData [1], 
-								double.Parse (splitData [2]), double.Parse (splitData [3]), 
-								double.Parse (splitData [4]), splitData [5]);
+							tData = createTransponderDataObj (splitData);
+						} else {
+							Trace.WriteLine ("Unable to parse data: " + line);
+						}
+						if (tData != null) {
 							dataList.Add (tData);
 						}
 					}
@@ -114,11 +114,31 @@ namespace CollisionDetectionSystem
 		}
 
 		/**
+		 * create a transponder data object
+		 * or null if it cannot be parsed
+		 */
+
+		private TransponderData createTransponderDataObj(String [] splitData) {
+			
+			try{
+				TransponderData tData = 
+					new TransponderData (splitData [0], splitData [1], 
+					double.Parse (splitData [2]), double.Parse (splitData [3]), 
+					double.Parse (splitData [4]), splitData [5]);
+				return tData;
+			} catch (Exception e) {
+				Trace.WriteLine ("ERROR: could not parse numbers to doubles");
+				return null;
+			}
+		}
+
+		/**
 		 *
 		 */
 		public List<StreamReader> streamReaders (String testDirName)
 		{
-			
+		
+			Console.WriteLine ("dirname: " + testDirName);
 			var files = new List<StreamReader> ();
 
 			string[] txtFiles = Directory.GetFiles (testDirName, "*.txt").Select (path => Path.GetFileName (path)).ToArray (); //array of text files   
