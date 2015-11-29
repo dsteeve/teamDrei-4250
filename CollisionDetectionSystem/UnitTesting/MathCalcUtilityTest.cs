@@ -108,9 +108,9 @@ namespace UnitTesting
 			Aircraft aircraft2 = new Aircraft ("2", plane2vec);
 			aircraft2.DataBuffer.Add (plane2DataTo);
 
-			double time = utility.Intersection (aircraft1, aircraft2, 1f);
+			double time = utility.Intersection (aircraft1, aircraft2, 0);
 
-			Assert.AreEqual (1.0, time);
+			Assert.AreEqual (2.0, time);
 
 		}
 	}
