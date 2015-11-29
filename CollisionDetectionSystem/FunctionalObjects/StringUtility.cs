@@ -2,13 +2,9 @@
 
 namespace CollisionDetectionSystem
 {
-	public class StringUtility
+	public static class StringUtility
 	{
-		public StringUtility ()
-		{
-			//empty constructor
-		}
-
+		
 		/**
 		 * split out the name=value
 		 * return the value

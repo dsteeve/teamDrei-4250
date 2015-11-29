@@ -184,10 +184,10 @@ namespace CollisionDetectionSystem
 		private void DetermineProximityOfIntruder (Aircraft intruder)
 		{
 			
-			//Calculate time until intersection
-			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 0.0822894); //radius of 500 feet (in NM)
+			//Calculate time until intersection, 0.0822894 is radius of 250 ft in Nautical Miles
+			var timeUntilIntersection = MathUtility.Intersection (ThisAircraft, intruder, 0.0822894); 
 
-			Trace.WriteLine ("time until intersection: " + timeUntilIntersection);
+			Trace.WriteLine ("Time until intersection: " + timeUntilIntersection);
 
 			//if > 0, then we are on trajectory to intersect.
 			if (timeUntilIntersection > 0) {

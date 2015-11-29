@@ -9,23 +9,25 @@ namespace UnitTesting
 	public class CollisionDetectionSystemTest
 	{
 		/*
-		 * 	This basically replaces the mainTest.cs class sel remove it, later on this is what we can use to test the different directories
-		 *  you can run this atm and it will give what running with directory of ~\SystemTesting\TestData\SystemTests\TestFiles\1
+		 * 	This basically replaces the mainTest.cs class.
+		 *   Later on this is what we can use to test the different system tests
+		 *   Right now it runs and it will give what running with directory of ~\SystemTesting\TestData\SystemTests\TestFiles\3
 		 */ 
 
 		[Test ()]
 		public void startTest ()
 		{
 			CollisionDetectionSystemClass cds = new CollisionDetectionSystemClass ();
-			String path = System.IO.Directory.GetCurrentDirectory ();
+			String systemTestPath = TestHelper.buildTestDir ("3");
 
-			path = path.Split (new String[]{ "UnitTesting\\" }, StringSplitOptions.None) [0] +
-				"SystemTesting\\TestData\\SystemTests\\TestFiles\\1";
-			String argument = "testdir=" + path;
+			cds.Start (StringUtility.getArgValue(systemTestPath));
 
-			cds.Start (StringUtility.getArgValue(argument));
+			/*
+			* TODO: eventually we should be able to check for # of radar and audio events thrown # match that back to what is expected.
+			*/
+			//I know, this test will not fail, but if the above test fails with catastrophic system error, test will fail
 
-			Assert.True(true);
+			Assert.True(true); 
 		}
 
 	}

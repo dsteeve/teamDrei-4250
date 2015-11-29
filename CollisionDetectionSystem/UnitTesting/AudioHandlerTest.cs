@@ -18,7 +18,7 @@ namespace UnitTesting
 
 		}
 		[Test ()]
-		public void redAlert ()
+		public void redAlertMax ()
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Threat threat = audHandler.DetermineThreatLevel (15);
@@ -26,7 +26,7 @@ namespace UnitTesting
 
 		}
 		[Test ()]
-		public void redAlert2 ()
+		public void redAlertMin ()
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Threat threat = audHandler.DetermineThreatLevel (0);
@@ -34,7 +34,7 @@ namespace UnitTesting
 
 		}
 		[Test ()]
-		public void orangeAlert ()
+		public void orangeAlertMax ()
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Threat threat = audHandler.DetermineThreatLevel (30);
@@ -42,7 +42,7 @@ namespace UnitTesting
 
 		}
 		[Test ()]
-		public void yellowAlert ()
+		public void yellowAlertMax ()
 		{
 			AudioHandler audHandler = new AudioHandler (); 
 			Threat threat = audHandler.DetermineThreatLevel (60);
