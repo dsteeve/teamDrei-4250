@@ -63,24 +63,27 @@ namespace UnitTesting
 
 			double distance = utility.Distance (coordinate1, coordinate2);
 
-			Assert.AreEqual (111.405, distance); 
-
+			Assert.That (60.1, Is.LessThan (distance));
+			//Assert.AreEqual (111.405, distance); 
+			Assert.That (60.2, Is.GreaterThan(distance));
 			//Test 2
 			coordinate1 = utility.CalculateCoordinate (10, 1, 5000);
 			coordinate2 = utility.CalculateCoordinate (10, 0, 5000);
 
 			distance = utility.Distance (coordinate1, coordinate2);
 
-			Assert.AreEqual (109.724, distance); 
-
+			//Assert.AreEqual (109.724, distance); 
+			Assert.That (59.2, Is.LessThan (distance));
+			Assert.That (59.3, Is.GreaterThan (distance));
 			//Test 3
 			coordinate1 = utility.CalculateCoordinate (70, 1, 5000);
 			coordinate2 = utility.CalculateCoordinate (70, 0, 5000);
 
 			distance = utility.Distance (coordinate1, coordinate2);
 
-			Assert.AreEqual (38.215, distance); //works
-
+			//Assert.AreEqual (38.215, distance); //works
+			Assert.That (20.6, Is.LessThan (distance));
+			Assert.That (20.7, Is.GreaterThan (distance));
 		}
 
 		[Test()]
