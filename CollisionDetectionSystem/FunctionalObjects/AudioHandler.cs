@@ -9,8 +9,11 @@ namespace CollisionDetectionSystem
 	{
 		#region IAudioHandler implementation
 
-		//get time until intersection
-		//call threat level
+		/**
+		 * Get time until intersection
+		 * call threat level
+		 */
+
 		public void OnAircraftWillIntersectInTimeEvent (double time, Position position)
 		{
 			Threat theLevel = DetermineThreatLevel (time);
@@ -65,6 +68,10 @@ namespace CollisionDetectionSystem
 				return false;
 			}
 		}
+
+		/**
+		 * Report to climb or descend
+		 */
 		private void ReportCommand(Position position){
 			if (position == Position.Above) {
 				Trace.WriteLine ("Descend! Descend!");

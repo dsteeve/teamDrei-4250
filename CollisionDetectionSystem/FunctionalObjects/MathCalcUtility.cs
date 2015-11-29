@@ -61,7 +61,9 @@ namespace CollisionDetectionSystem
 			}
 		}
 			
-
+		/**
+		 * Calculate vector between 2 points, giving velocity, direction
+		 */
 		public Vector<double> CalculateVector (Vector<double> coordinateFrom, Vector<double> coordinateTo)
 		{
 			double x = Math.Round(coordinateTo[0] - coordinateFrom[0], 7);
