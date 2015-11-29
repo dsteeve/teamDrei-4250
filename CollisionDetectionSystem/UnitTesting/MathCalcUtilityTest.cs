@@ -23,7 +23,7 @@ namespace UnitTesting
 			Assert.AreEqual (2.0, vec[0]);
 			Assert.AreEqual (3.0, vec[1]);
 			Assert.AreEqual (1.0, vec [2]);
-//
+
 			//Real data test
 			data1 = Vector<double>.Build.DenseOfArray(new double[3]{51.5033630, -0.1276250, 500});
 			data2 = Vector<double>.Build.DenseOfArray(new double[3]{51.5033635, -0.1276255, 510});
@@ -47,9 +47,11 @@ namespace UnitTesting
 
 			Vector<double> result2 = utility.CalculateCoordinate (100, 100, 100);
 
-			Assert.AreEqual (104.1874, result2 [0]);
-			Assert.AreEqual (-590.8755, result2 [1]);
-			Assert.AreEqual (3379.937, result2 [2]);
+			Assert.AreEqual (104.1863, result2 [0]);
+			Assert.AreEqual (-590.8690, result2 [1]);
+			Assert.That (3379.9002, Is.LessThan (result2 [2]));
+			Assert.That (3379.91, Is.GreaterThan (result2 [2]));
+
 
 		}
 
