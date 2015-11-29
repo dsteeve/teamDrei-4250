@@ -9,16 +9,13 @@ namespace UnitTesting
 	public class RadarHandlerTest
 	{
 		/*	
-		 *  	This class is split into tesiint radar events and the tests for the cordinates being fed in
+		 *  	This class is split into test the radar events and the tests for the cordinates being fed in
 		 */ 
-
-		//line for actually getting the first item in the vector double in a verctor double
-		//Console.WriteLine ("us :" + (us.DataBuffer[us.DataBuffer.Count-1])[0]);
 
 		[Test ()]
 		public void AircraftDidEnterRadarRangeEventTestLat ()
 		{
-			DataProcessor dp = new DataProcessor ();
+			
 			RadarHandler rh = new RadarHandler ();
 
 			Aircraft us = new Aircraft ("1", Vector<double>.Build.DenseOfArray(new double[3]{.002, 0, 0}));
@@ -34,7 +31,7 @@ namespace UnitTesting
 		[Test ]
 		public void AircraftDidEnterRadarRangeEventTestLong ()
 		{
-			DataProcessor dp = new DataProcessor ();
+			
 			RadarHandler rh = new RadarHandler ();
 
 			Aircraft us = new Aircraft ("1", Vector<double>.Build.DenseOfArray(new double[3]{.002, 0, 0}));
@@ -50,7 +47,7 @@ namespace UnitTesting
 		[Test ]
 		public void AircraftDidEnterRadarRangeEventTestAlt ()
 		{
-			DataProcessor dp = new DataProcessor ();
+			
 			RadarHandler rh = new RadarHandler ();
 
 			Aircraft us = new Aircraft ("1", Vector<double>.Build.DenseOfArray(new double[3]{.002, 0, 0}));
@@ -65,8 +62,8 @@ namespace UnitTesting
 
 
 		/*
-		 * 	Test for cordinates being fed in above, I'm not sure the altitude one shoud be that much different in altitude.
-		 * 	
+		 * 	Test for cordinates
+		 * 	//0.075834 degrees in lat.== 5.232546 miles == 4.5469 nm
 		 */
 
 		[Test ]
@@ -75,18 +72,18 @@ namespace UnitTesting
 			MathCalcUtility utility = new MathCalcUtility ();
 
 			Vector<double> coordinate1 = utility.CalculateCoordinate (40.037919,-89,3000);
-			Vector<double> coordinate2 = utility.CalculateCoordinate (39.962085,-89,3000);
+			Vector<double> coordinate2 = utility.CalculateCoordinate (39.962085,-89,3000); 
 
-			double distance = utility.Distance (coordinate1, coordinate2);//8.424km
-			distance *= 0.539956804;
+			double distance = utility.Distance (coordinate1, coordinate2);
+			Console.WriteLine("distance personalAlt: " + distance);
 
-			double difference = Math.Abs(distance * .00001);
+			Assert.That (4.54, Is.LessThan(distance));
+			Assert.That (4.55, Is.GreaterThan (distance));
 
-			// had to do it this way because a straight comparison was not working
-			Assert.That(Math.Abs(distance -  4.548596116896),  Is.LessThanOrEqualTo(difference), "greater than");
 		}		
 
 		[Test ]
+		//.09053 difference in long 
 		public void DistancePersonalLong ()
 		{
 			MathCalcUtility utility = new MathCalcUtility ();
@@ -94,9 +91,10 @@ namespace UnitTesting
 			Vector<double> coordinate1 = utility.CalculateCoordinate (40,-89,3000);
 			Vector<double> coordinate2 = utility.CalculateCoordinate (40,-89.09053,3000);
 
-			double distance = utility.Distance (coordinate1, coordinate2); //7.735km
-			distance *= 0.539956804;
-			Assert.AreEqual (4.17656587894, distance);
+			double distance = utility.Distance (coordinate1, coordinate2); 
+			Console.WriteLine("distance personalLong: " + distance);
+			Assert.That (4.174, Is.LessThan(distance));
+			Assert.That (4.176, Is.GreaterThan(distance));
 		}		
 
 		[Test ]
@@ -107,29 +105,28 @@ namespace UnitTesting
 			Vector<double> coordinate1 = utility.CalculateCoordinate (40,-89,3000);
 			Vector<double> coordinate2 = utility.CalculateCoordinate (40,-89,10000);
 
-			double distance = utility.Distance (coordinate1, coordinate2); //7km
-			distance *= 0.539956804;	
-			Assert.AreEqual (3.779697628, distance);
+			double distance = utility.Distance (coordinate1, coordinate2); //
+			Console.WriteLine("distance personalAlt: " + distance);
+			Assert.That (1.15, Is.LessThan(distance));
+			Assert.That (1.16, Is.GreaterThan (distance));
 
-
-			//	Assert.AreEqual (true, rh.AircraftDidEnterRadarRangeEvent (them));
 		}		
 
 		[Test ]
 		public void DistancePersonalRandom ()
 		{
+			//distance is around  59.9 nm
 			MathCalcUtility utility = new MathCalcUtility ();
 
 			Vector<double> coordinate1 = utility.CalculateCoordinate (40,-89,3000);
 			Vector<double> coordinate2 = utility.CalculateCoordinate (41,-89,3000);
 
-			double distance = utility.Distance (coordinate1, coordinate2); //7km
-			distance *= 0.539956804;	
+			double distance = utility.Distance (coordinate1, coordinate2); 
 			Console.WriteLine (distance);
-			Assert.That (59.9, Is.LessThanOrEqualTo(distance));
-			//distance is greater than 59.9 nm
+			Console.WriteLine("distance personalRand: " + distance);
+			Assert.That (59.96, Is.LessThanOrEqualTo(distance));
+			Assert.That (59.97, Is.GreaterThanOrEqualTo(distance));
 
-			//	Assert.AreEqual (true, rh.AircraftDidEnterRadarRangeEvent (them));
 		}
 	}
 }

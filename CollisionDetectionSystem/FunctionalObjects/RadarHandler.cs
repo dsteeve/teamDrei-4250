@@ -5,6 +5,7 @@ using System.Diagnostics;
 
 namespace CollisionDetectionSystem
 {
+	//Radar handling class
 	public class RadarHandler: IRadarHandler
 	{
 		#region IRadarHandler implementation
@@ -15,6 +16,7 @@ namespace CollisionDetectionSystem
 			AircraftDidEnterRadarRangeEventTest (intruder);
 		}			
 
+		//method for testing
 		public Boolean AircraftDidEnterRadarRangeEventTest (Aircraft intruder)
 		{
 			UpdateRadarScreen(intruder.Identifier);
@@ -22,9 +24,10 @@ namespace CollisionDetectionSystem
 		}
 
 		//this method probably needs some coordinates of the aircraft
+		//currently takes in the string id of the plane.
 		private Boolean UpdateRadarScreen (String id)
 		{
-			Trace.WriteLine ("update radar for plane : " + id);
+			Trace.WriteLine ("Update radar for plane : " + id);
 			return true;
 		}
 
