@@ -19,19 +19,7 @@ namespace UnitTesting
 		public void GotSendDataEvent(List<TransponderData> tdlist) {
 			this.broadedCastedData = true;
 		}
-
-		private String buildTestDir(){
 			
-			String path = System.IO.Directory.GetCurrentDirectory ();
-			String [] pieces = path.Split (new String[]{ "UnitTesting"  }, StringSplitOptions.None);
-			path = pieces[0] + 
-				"SystemTesting" +  Path.DirectorySeparatorChar 
-				+ "TestData" +   Path.DirectorySeparatorChar
-				+ "SystemTests" +  Path.DirectorySeparatorChar + 
-				"TestFiles" +  Path.DirectorySeparatorChar + "testReadFile";
-			Console.WriteLine ("path: " + path);
-			return path;
-		}
 
 
 		[TestFixtureSetUp] 
@@ -44,7 +32,7 @@ namespace UnitTesting
 		[Test ()]
 		public void gotGoodFile ()
 		{
-			String dirname = buildTestDir();
+			String dirname = TestHelper.buildTestDir();
 
 			Assert.IsFalse (broadedCastedData);
 			unit.Start (dirname);
@@ -59,7 +47,7 @@ namespace UnitTesting
 		public void streamReadersTest ()
 		{
 			
-			String argument = "testdir=" +  buildTestDir();
+			String argument = "testdir=" +  TestHelper.buildTestDir();
 
 			var readers = unit.streamReaders (StringUtility.getArgValue(argument));
 
@@ -70,7 +58,7 @@ namespace UnitTesting
 		[Test]
 		public void buildTransporterDataListTest ()
 		{
-			String argument = "testdir=" + buildTestDir();
+			String argument = "testdir=" + TestHelper.buildTestDir();
 
 			var list = unit.buildTransporterDataList (StringUtility.getArgValue(argument));
 
@@ -95,7 +83,7 @@ namespace UnitTesting
 		[Test]
 		public void sendDataTest ()
 		{
-			String argument = "testdir=" + buildTestDir();
+			String argument = "testdir=" + TestHelper.buildTestDir();
 
 			var list = unit.buildTransporterDataList (StringUtility.getArgValue(argument));
 
