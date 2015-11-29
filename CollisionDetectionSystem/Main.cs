@@ -26,15 +26,12 @@ namespace CollisionDetectionSystem
 				if (args.Length == 0) {
 					cds.Start();
 				} else {
-					if (args[0].StartsWith("testdir")) {
+					if (args[0].ToLower().StartsWith("testdir")) {
 						cds.Start(StringUtility.getArgValue(args[0]));
-					} else {
-						if (args[0].StartsWith("testDir")) {
-							cds.Start(StringUtility.getArgValue(args[0]));
-						} else {
+					}  else {
 							Console.WriteLine ("Usage: CollisionDetectionSystem testdir=testDirectoryName to run in test mode");
 						} 
-					}
+
 				}
 				Console.WriteLine ("completed successfully");
 				return 0;
