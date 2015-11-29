@@ -74,14 +74,16 @@ namespace UnitTesting
 
 			var list = unit.buildTransporterDataList (StringUtility.getArgValue(argument));
 
-			Assert.AreEqual ("11/27/2015 12:00:00 PM", list[3].PingTimestamp.ToString());
+			DateTime time = DateTime.Parse("12:00:00.000");
+
+			Assert.AreEqual (time, list[0].PingTimestamp);
 			Assert.AreEqual ("CE64B2", list[0].Icao.ToString());
 			Assert.AreEqual (40.050000, list[0].Latitude);
 			Assert.AreEqual (-89.950000, list[0].Longitude);
 			Assert.AreEqual (3500, list[0].Altitude);
 			Assert.AreEqual ("00HN00", list[0].SquawkCode.ToString());
 
-			Assert.AreEqual ("11/27/2015 12:00:00 PM", list[1].PingTimestamp.ToString());
+			Assert.AreEqual (time, list[1].PingTimestamp);
 			Assert.AreEqual ("B1E24F", list[1].Icao.ToString());
 			Assert.AreEqual (39.950000, list[1].Latitude);
 			Assert.AreEqual (-90.050000, list[1].Longitude);
